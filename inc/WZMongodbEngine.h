@@ -6,6 +6,7 @@
 #ifndef WZUTIL_WZDATAENGINE_H_
 #define WZUTIL_WZDATAENGINE_H_
 
+#include <mongocxx/client.hpp>
 #include "WZDataEngine.h"
 
 class MongodbEngine : public DataEngine {
@@ -23,9 +24,7 @@ class MongodbEngine : public DataEngine {
   //int delete_many(const vector<WZStoredFrame> &, const char tablename[20]) = 0;
 
  private:
-  int insert(document *doc);
-  int update(document *doc);
-  int find(document *doc);
+  mongocxx::client *conn;
 };
 
 #endif  // WZUTIL_WZDATAENGINE_H_
