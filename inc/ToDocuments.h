@@ -78,10 +78,11 @@ void toDocument(const string key, const pair<string, string> value, const char I
 					<< "$gte" << pair.first
 					<< "$lte" << pair.second
 					<< bsoncxx::builder::stream::close_document
+					<< "InstrumentID" << ID
 					<< bsoncxx::builder::stream::finalize;
 	}
 	else{
-		(*doc) << key << pair.first << bsoncxx::builder::stream::finalize;
+		(*doc) << key << pair.first << "InstrumentID" << ID << bsoncxx::builder::stream::finalize;
 	}
 }
 
