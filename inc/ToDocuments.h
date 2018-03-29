@@ -72,17 +72,36 @@ void toDocument(const vector<TSMarketDataField*> & vTSMd, vector<document> & doc
 //key: column name
 //value: lowerbound & upperbound
 //ID: instrument id
-void toDocument(const string key, const pair<string, string> value, const char ID[20], document *doc) {
-	if(pair.second != ""){
-		(*doc) << key << bsoncxx::builder::stream::open_document
-					<< "$gte" << pair.first
-					<< "$lte" << pair.second
+void toDocument(KeyValue *find, const char ID[20], document *doc) {
+	if(find-> maxvalue != ""){
+		(*doc) << find->key << bsoncxx::builder::stream::open_document
+					<< "$gte" << find->minvalue
+					<< "$lte" << find->maxvalue
 					<< bsoncxx::builder::stream::close_document
 					<< "InstrumentID" << ID
 					<< bsoncxx::builder::stream::finalize;
+	} else{
+		(*doc) << find->key << find->minvalue << "InstrumentID" << ID << bsoncxx::builder::stream::finalize;
 	}
-	else{
-		(*doc) << key << pair.first << "InstrumentID" << ID << bsoncxx::builder::stream::finalize;
+}
+
+//update one
+void toDocument(KeyValue *find, vector<KeyValue> & value, document *doc_find, document *doc_update){
+	if(find -> maxvalue != ""){
+		(*doc_find) << find->key << bsoncxx::builder::stream::open_document
+					<< "$gte" << find->minvalue
+					<< "$lte" << find->maxvalue
+					<< bsoncxx::builder::stream::close_document
+					<< bsoncxx::builder::stream::finalize;
+	} else {
+		(*doc_update) << find->key << find->minvalue << bsoncxx::builder::stream::finalize;
+	}
+	int length = value.size();
+	for(int index=0; index<length; index++){
+		(*doc_update) << "$set" << bsoncxx::builder::stream::open_document
+									<< value[index]->key << value[index]->minvalue
+									<< bsoncxx::builder::stream::close_document
+									<< bsoncxx::builder::stream::finalize;
 	}
 }
 
