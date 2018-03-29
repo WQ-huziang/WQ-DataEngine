@@ -32,8 +32,8 @@ int MongodbEngine::insert_one(const TSMarketDataField * md) {
   // get collection
   mongocxx::database db = conn->database(libname);
   mongocxx::collection coll = db[tablename];
-  coll.insert_one(*doc);
-  return 1;
+  auto result = coll.insert_one(*doc);
+  return result.inserted_count();
 }
 
 int MongodbEngine::insert_many(const vector<TSMarketDataField*> &mds) {
@@ -44,8 +44,8 @@ int MongodbEngine::insert_many(const vector<TSMarketDataField*> &mds) {
   // get collection
   mongocxx::database db = conn->database(libname);
   mongocxx::collection coll = db[tablename];
-  coll.insert_many(docs);
-  return docs.size();
+  auto result = coll.insert_many(docs);
+  return result.inserted_count();
 }
 
 int MongodbEngine::update_one(const TSMarketDataField *md) {
