@@ -14,14 +14,12 @@ class MongodbEngine : public DataEngine {
   static DataEngine* getInstance();
 
   // type TSMarketDataField
-  int insert_one(const TSMarketDataField*);
+  int insert_one(const TSMarketDataField &);
   int insert_many(const vector<TSMarketDataField*> &);
-  int update_one(const TSMarketDataField*);
-  int update_many(const vector<TSMarketDataField*> &);
-  // int find_one(WZStoredFrame &, const map<string, string> &, const char tablename[20]) = 0;
-  int find(vector<TSMarketDataField*> &, const string, const pair<string, string>, const char ID[20] = "\0");
-  //int delete_one(const WZStoredFrame &, const char tablename[20]) = 0;
-  //int delete_many(const vector<WZStoredFrame> &, const char tablename[20]) = 0;
+  int update_one(const KeyValue &, const vector<KeyValue> &);
+  int update_many(const KeyValue &, const vector<KeyValue> &);
+  int find_one(string &json, const vector<KeyValue> &, const char ID[20] = "\0");
+  int find_many(vector<string> &jsons, const vector<KeyValue> &, const char ID[20] = "\0");
 
  private:
   mongocxx::client *conn;

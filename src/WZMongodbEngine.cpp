@@ -24,10 +24,10 @@ DataEngine* MongodbEngine::getInstance() {
   return instance;
 }
 
-int MongodbEngine::insert_one(const TSMarketDataField * md) {
+int MongodbEngine::insert_one(const TSMarketDataField &md) {
   // get document
   document doc {};
-  toDocument(md, &doc);
+  toDocument(md, doc);
 
   // get collection
   mongocxx::database db = conn->database(libname);
@@ -39,7 +39,7 @@ int MongodbEngine::insert_one(const TSMarketDataField * md) {
 int MongodbEngine::insert_many(const vector<TSMarketDataField*> &mds) {
   // get document
   vector<document> docs;
-  toDocument(mds, &docs);
+  toDocument(mds, docs);
 
   // get collection
   mongocxx::database db = conn->database(libname);
@@ -48,46 +48,58 @@ int MongodbEngine::insert_many(const vector<TSMarketDataField*> &mds) {
   return result.inserted_count();
 }
 
-int MongodbEngine::update_one(const TSMarketDataField *md) {
+int MongodbEngine::update_one(const KeyValue &filter, const vector<KeyValue> &update) {
   // get document
-  document doc {};
-  toDocument(md, &doc);
+  document filterdoc {};
+  ducument updatedoc {};
+  toDocument(filter, update, filterdoc, updatedoc);
 
   // get collection
   mongocxx::database db = conn->database(libname);
   mongocxx::collection coll = db[tablename];
-  return update(&doc);
+  auto result = coll.update_one(filterdoc, updatedoc);
+  return result.modified_count();
 }
 
-int MongodbEngine::update_many(const vector<TSMarketDataField*> &mds) {
+int MongodbEngine::update_many(const KeyValue &filter, const vector<KeyValue> &update) {
   // get document
-  document doc {};
-  toDocument(mds, &doc);
+  document filterdoc {};
+  ducument updatedoc {};
+  toDocument(filter, update, filterdoc, updatedoc);
 
   // get collection
   mongocxx::database db = conn->database(libname);
   mongocxx::collection coll = db[tablename];
-  return update(&doc);
+  auto result = coll.update_many(filterdoc, updatedoc);
+  return result.modified_count();
 }
 
-int MongodbEngine::find(vector<TSMarketDataField*> &mds, const string key, const pair<string, string> values, const char ID[20]) {
+int MongodbEngine::find_one(string &json, const vector<KeyValue> &, const char ID[20]) {
   // get document
   document doc {};
-  toDocument(key, values, ID, &doc);
-  return find(mds, &doc);
-}
+  toDocument(find, doc);
 
-int MongodbEngine::insert(document *doc) {
   // get collection
   mongocxx::database db = conn->database(libname);
   mongocxx::collection coll = db[tablename];
-  coll.insert_one(*doc);
+  auto value = coll.find(doc).begin();
+  json = bsoncxx::to_json(*value);
+  return 1;
 }
 
-int MongodbEngine::update(document *doc) {
+int MongodbEngine::find_many(vector<string> &jsons, const vector<KeyValue> &, const char ID[20]) {
+  // get document
+  document doc {};
+  toDocument(find, doc);
 
-}
-
-int MongodbEngine::find(vector<TSMarketDataField*> &mds, document *doc) {
-
+  // get collection
+  mongocxx::database db = conn->database(libname);
+  mongocxx::collection coll = db[tablename];
+  auto cursor = coll.find(doc);
+  int num = 0;
+  for (auto docu : cursor) {
+    num++;
+    jsons.push_back(bsoncxx::to_json(docu));
+  }
+  return num;
 }
