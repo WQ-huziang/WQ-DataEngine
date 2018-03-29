@@ -74,12 +74,20 @@ void toDocument(const vector<TSMarketDataField*> & vTSMd, vector<document> & doc
 //ID: instrument id
 void toDocument(KeyValue *find, const char ID[20], document *doc) {
 	if(find-> maxvalue != ""){
-		(*doc) << find->key << bsoncxx::builder::stream::open_document
+		if(strlen(ID) != 0){
+			(*doc) << find->key << bsoncxx::builder::stream::open_document
 					<< "$gte" << find->minvalue
 					<< "$lte" << find->maxvalue
 					<< bsoncxx::builder::stream::close_document
 					<< "InstrumentID" << ID
 					<< bsoncxx::builder::stream::finalize;
+		} else {
+			(*doc) << find->key << bsoncxx::builder::stream::open_document
+					<< "$gte" << find->minvalue
+					<< "$lte" << find->maxvalue
+					<< bsoncxx::builder::stream::close_document
+					<< bsoncxx::builder::stream::finalize;
+		}
 	} else{
 		(*doc) << find->key << find->minvalue << "InstrumentID" << ID << bsoncxx::builder::stream::finalize;
 	}
