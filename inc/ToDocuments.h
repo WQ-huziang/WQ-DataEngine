@@ -37,32 +37,9 @@ using bsoncxx::builder::stream::document;
 void toDocument(const map<string, string> md, document *doc) {
 	map<string, string>::iterator it;
 	for(it = md.begin; it != md.end(); it++){
-		(*doc) << it->first << it->second << bsoncxx::builder::stream::finalize;
+		(*doc) << it->first << it->second;
 	}
-	// (*doc) << bsoncxx::builder::stream::finalize;
-	// (*doc) << "TradingDay" << pMd->TradingDay
-	// 			<< "InstrumentID" << pMd->InstrumentID
-	// 			<< "LastPrice" << pMd->LastPrice
-	// 			<< "PreSettlementPrice" << pMd->LastPrice
-	// 			<< "PreClosePrice" << pMd->PreClosePrice
-	// 			<< "PreOpenInterest" << pMd->PreOpenInterest
-	// 			<< "OpenPrice" << pMd->OpenPrice
-	// 			<< "HighestPrice" << pMd->HighestPrice
-	// 			<< "LowestPrice" << pMd->LowestPrice
-	// 			<< "Volume" << pMd->Volume
-	// 			<< "Turnover" << pMd->Turnover
-	// 			<< "OpenInterest" << pMd->OpenInterest
-	// 			<< "ClosePrice" << pMd->ClosePrice
-	// 			<< "SettlementPrice" << pMd->SettlementPrice
-	// 			<< "UpperLimitPrice" << pMd->UpperLimitPrice
-	// 			<< "LowerLimitPrice" << pMd->LowerLimitPrice
-	// 			<< "UpdateTime" << pMd->UpdateTime
-	// 			<< "UpdateMillisec" << pMd->UpdateMillisec
-	// 			<< "BidPrice1" << pMd->BidPrice1
-	// 			<< "BidVolume1" << pMd->BidVolume1
-	// 			<< "AskPrice1" << pMd->AskPrice1
-	// 			<< "AskVolume1" << pMd->AskVolume1
-	// 			<< bsoncxx::builder::stream::finalize;
+	(*doc) << bsoncxx::builder::stream::finalize;
 }
 
 void toDocument(const vector<map<string, string>> & vmd, vector<document> & docs) {
