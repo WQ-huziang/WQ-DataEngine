@@ -28,25 +28,35 @@
 //     double   	AskPrice1;             //申卖价一
 //     int      	AskVolume1;            //申卖量一
 // };
+#include <iostream>
+#include <map>
+#include <string.h>
+using namespace std;
+using bsoncxx::builder::stream::document;
+
+struct KeyValue {
+  string key;
+  string minvalue;
+  string maxvalue;
+};
 
 #ifndef WZUTIL_TODOCUMENT_H_
 #define WZUTIL_TODOCUMENT_H_
 
-using bsoncxx::builder::stream::document;
-
-void toDocument(const map<string, string> md, document *doc) {
-	map<string, string>::iterator it;
-	for(it = md.begin; it != md.end(); it++){
+void toDocument(const map<string, string> &md, document *doc) {
+	map<string, string>::const_iterator it = md.begin();
+	for(it; it != md.end(); it++){
 		(*doc) << it->first << it->second;
 	}
 	(*doc) << bsoncxx::builder::stream::finalize;
 }
 
 void toDocument(const vector<map<string, string>> & vmd, vector<document> & docs) {
-	int length = vTSMd.size();
-	for(int index=0; index<length; index++){
+	vector<map<string, string>>::const_iterator it = vmd.begin();
+	for(; it != vmd.end(); it++){
 		document doc;
-		toDocument(vTSMd[index], doc);
+
+		toDocument(*it, &doc);
 		docs.push_back(doc);
 	}
 }
@@ -56,7 +66,7 @@ void toDocument(const vector<map<string, string>> & vmd, vector<document> & docs
 //ID: instrument id
 void toDocument(vector<KeyValue> &find, const char ID[20], document *doc) {
 	vector<KeyValue>::iterator it;
-	for(it = find.begin; it != find.end(); it++){
+	for(it = find.begin(); it != find.end(); it++){
 		if(it -> maxvalue != ""){
 			if(strlen(ID) != 0){
 				(*doc) << it ->key << bsoncxx::builder::stream::open_document
@@ -89,10 +99,10 @@ void toDocument(KeyValue *find, vector<KeyValue> & value, document *doc_find, do
 	} else {
 		(*doc_update) << find->key << find->minvalue << bsoncxx::builder::stream::finalize;
 	}
-	int length = value.size();
-	for(int index=0; index<length; index++){
+	vector<KeyValue>::iterator it;
+	for(it = value.begin(); it != value.end(); it++){
 		(*doc_update) << "$set" << bsoncxx::builder::stream::open_document
-									<< value[index]->key << value[index]->minvalue
+									<< it->key << it->minvalue
 									<< bsoncxx::builder::stream::close_document
 									<< bsoncxx::builder::stream::finalize;
 	}
