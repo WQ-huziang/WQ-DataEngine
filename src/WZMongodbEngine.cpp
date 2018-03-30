@@ -24,7 +24,7 @@ DataEngine* MongodbEngine::getInstance() {
   return instance;
 }
 
-int MongodbEngine::insert_one(const TSMarketDataField * md) {
+int MongodbEngine::insert_one(const map<string, string> &md) {
   // get document
   document doc {};
   toDocument(md, &doc);
@@ -36,7 +36,7 @@ int MongodbEngine::insert_one(const TSMarketDataField * md) {
   return result.inserted_count();
 }
 
-int MongodbEngine::insert_many(const vector<TSMarketDataField*> &mds) {
+int MongodbEngine::insert_many(const vector<map<string, string>> &mds) {
   // get document
   vector<document> docs;
   toDocument(mds, &docs);
@@ -70,10 +70,10 @@ int MongodbEngine::update_many(const vector<TSMarketDataField*> &mds) {
   return update(&doc);
 }
 
-int MongodbEngine::find(vector<TSMarketDataField*> &mds, const string key, const pair<string, string> values, const char ID[20]) {
+int MongodbEngine::find(vector<map<string, string>> &mds, vector<KeyValue> &condition, const char ID[20] ID) {
   // get document
   document doc {};
-  toDocument(key, values, ID, &doc);
+  toDocument(condition, ID, &doc);
   return find(mds, &doc);
 }
 
@@ -88,6 +88,14 @@ int MongodbEngine::update(document *doc) {
 
 }
 
-int MongodbEngine::find(vector<TSMarketDataField*> &mds, document *doc) {
-
+int MongodbEngine::find(vector<map<string, string>> &mds, document *doc) {
+  mongocxx::database db = conn->database(libname);
+  mongocxx::collection coll = db[tablename];
+  mongocxx::cursor cursor = coll.find(*doc);
+  if(!cursor){
+    return -1;
+  }
+  for(auto cur : cursor){
+    
+  }
 }
