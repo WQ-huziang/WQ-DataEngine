@@ -14,38 +14,23 @@
 #include <map>
 #include <gtest/gtest.h>
 #include "WZMongodbEngine.h"
-#include "ThostFtdcMdApi.h"
+#include "DataParse.h"
 using namespace std;
 
-inline struct TSMarketDataField parserFrom(const CThostFtdcDepthMarketDataField &req){
-  TSMarketDataField rtn;
-  strcpy(rtn.TradingDay, req.TradingDay);
-  strcpy(rtn.InstrumentID, req.InstrumentID);
-  rtn.LastPrice = req.LastPrice;
-  rtn.PreSettlementPrice = req.PreSettlementPrice;
-  rtn.PreClosePrice = req.PreClosePrice;
-  rtn.PreOpenInterest = req.PreOpenInterest;
-  rtn.OpenPrice = req.OpenPrice;
-  rtn.HighestPrice = req.HighestPrice;
-  rtn.LowestPrice = req.LowestPrice;
-  rtn.Volume = req.Volume;
-  rtn.Turnover = req.Turnover;
-  rtn.OpenInterest = req.OpenInterest;
-  rtn.ClosePrice = req.ClosePrice;
-  rtn.SettlementPrice = req.SettlementPrice;
-  rtn.UpperLimitPrice = req.UpperLimitPrice;
-  rtn.LowerLimitPrice = req.LowerLimitPrice;
-  strcpy(rtn.UpdateTime, req.UpdateTime);
-  rtn.UpdateMillisec = req.UpdateMillisec;
-  rtn.BidPrice1 = req.BidPrice1;
-  rtn.BidVolume1 = req.BidVolume1;
-  rtn.AskPrice1 = req.AskPrice1;
-  rtn.AskVolume1 = req.AskVolume1;
-  return rtn;
-}
-
 DataEngine *db = NULL;
+FILE *fp = NULL;
+TSMarketDataField *pDepthMarketData = NULL;
 
+mongocxx::instance inst{};
+mongocxx::client conn = mongocxx::client(mongocxx::uri("mongodb://localhost:27017"));
+mongocxx::collection collection = conn["test"]["TSMarketDataField"];
+
+map<string, string> ts;
+map<KeyValue> kv;
+
+void find_all() {
+
+}
 
 class TestMongodbEngine : public testing::Test
 {
@@ -53,23 +38,36 @@ class TestMongodbEngine : public testing::Test
   static void SetUpTestCase()
   {
     db = MongodbEngine::getInstance();
+    db->setLibname("test");
+    db->setTablename("TSMarketDataField");
+    fp = fopen("../test/data.csv", "r");
+    if (fp == NULL) {
+      perror("no file");
+      exit(1);
+    }
+    pDepthMarketData = new TSMarketDataField();
   }
   static void TearDownTestCase()
   {
+    collection.delete_many({});
+    fclose(fp);
   }
   virtual void SetUp()
   {
-
   }
   virtual void TearDown()
   {
-
+    delete pDepthMarketData;
+    ts.clear();
+    kv.clear();
   }
 };
 
-TEST_F(TestMongodbEngine, SizeOF)
+TEST_F(TestMongodbEngine, insert_one)
 {
-    ASSERT_TRUE(db == NULL);
+  fread(pDepthMarketData, sizeof(TSMarketDataField), 1, fp);
+  parseFrom(ts, pDepthMarketData);
+  insert_one(ts);
 }
 
 int main(int argc,char *argv[])
