@@ -28,86 +28,73 @@
 //     double     AskPrice1;             //申卖价一
 //     int        AskVolume1;            //申卖量一
 // };
-#include <iostream>
-#include <map>
-#include <string.h>
-using namespace std;
-using bsoncxx::builder::stream::document;
-
-struct KeyValue {
-  string key;
-  string minvalue;
-  string maxvalue;
-};
 
 #ifndef WZUTIL_TODOCUMENT_H_
 #define WZUTIL_TODOCUMENT_H_
 
+#include <iostream>
+#include <map>
+#include <string>
+#include <WZDataEngine.h>
+using std::map;
+using std::vector;
 using bsoncxx::builder::stream::document;
 
-void toDocument(const map<string, string> &md, document *doc) {
-  map<string, string>::const_iterator it = md.begin();
-  for(it; it != md.end(); it++){
-    (*doc) << it->first << it->second;
-  }
-  (*doc) << bsoncxx::builder::stream::finalize;
-}
-
-void toDocument(const vector<map<string, string>> & vmd, vector<document> & docs) {
-  vector<map<string, string>>::const_iterator it = vmd.begin();
-  for(; it != vmd.end(); it++){
-    document doc;
-
-    toDocument(*it, &doc);
-    docs.push_back(doc);
-  }
-}
-
-//key: column name
-//value: lowerbound & upperbound
-//ID: instrument id
-void toDocument(vector<KeyValue> &find, const char ID[20], document *doc) {
-  vector<KeyValue>::iterator it;
-  for(it = find.begin(); it != find.end(); it++){
-    if(it -> maxvalue != ""){
-      if(strlen(ID) != 0){
-        (*doc) << it ->key << bsoncxx::builder::stream::open_document
-            << "$gte" << it->minvalue
-            << "$lte" << it->maxvalue
-            << bsoncxx::builder::stream::close_document
-            << "InstrumentID" << ID
-            << bsoncxx::builder::stream::finalize;
-      } else {
-        (*doc) << it->key << bsoncxx::builder::stream::open_document
-            << "$gte" << it->minvalue
-            << "$lte" << it->maxvalue
-            << bsoncxx::builder::stream::close_document
-            << bsoncxx::builder::stream::finalize;
-      }
+inline void keyvalueToDocument(const KeyValue &kv, document &doc) {
+    if(kv.maxvalue != ""){
+      doc << kv.key << bsoncxx::builder::stream::open_document
+          << "$gte" << kv.minvalue
+          << "$lte" << kv.maxvalue
+          << bsoncxx::builder::stream::close_document;
     } else {
-      (*doc) << it->key << it->minvalue << "InstrumentID" << ID << bsoncxx::builder::stream::finalize;
+      doc << kv.key << kv.minvalue;
     }
+}
+
+void toDocument(const map<string, string> &md, document &doc) {
+  for (auto &it : md) {
+    doc << it.first << it.second;
   }
+  doc << bsoncxx::builder::stream::finalize;
+}
+
+void toDocument(const vector<map<string, string>> & vmd, vector<bsoncxx::document::value> & docvs) {
+  document doc {};
+  for (auto &md : vmd) {
+    for (auto &it : md) {
+      doc << it.first << it.second;
+    }
+    docvs.push_back(doc << bsoncxx::builder::stream::finalize);
+    doc.clear();
+  }
+}
+
+/// key: column name
+/// value: lowerbound & upperbound
+/// ID: instrument id
+void toDocument(const vector<KeyValue> &find, const char ID[20], document &doc) {
+  if (strlen(ID) != 0) {
+    doc << "InstrumentID" << ID;
+  }
+  for(auto &it : find){
+    keyvalueToDocument(it, doc);
+  }
+  doc << bsoncxx::builder::stream::finalize;
 }
 
 //update one
-void toDocument(KeyValue *find, vector<KeyValue> & value, document *doc_find, document *doc_update){
-  if(find -> maxvalue != ""){
-    (*doc_find) << find->key << bsoncxx::builder::stream::open_document
-          << "$gte" << find->minvalue
-          << "$lte" << find->maxvalue
-          << bsoncxx::builder::stream::close_document
-          << bsoncxx::builder::stream::finalize;
-  } else {
-    (*doc_update) << find->key << find->minvalue << bsoncxx::builder::stream::finalize;
+void toDocument(const KeyValue &find, const vector<KeyValue> & value, document &doc_find, document &doc_update){
+  if (find.maxvalue != "") {
+    keyvalueToDocument(find, doc_find);
   }
-  vector<KeyValue>::iterator it;
-  for(it = value.begin(); it != value.end(); it++){
-    (*doc_update) << "$set" << bsoncxx::builder::stream::open_document
-                  << it->key << it->minvalue
-                  << bsoncxx::builder::stream::close_document
-                  << bsoncxx::builder::stream::finalize;
+  doc_find << bsoncxx::builder::stream::finalize;
+
+  for(auto &it : value){
+    doc_update << "$set" << bsoncxx::builder::stream::open_document
+               << it.key << it.minvalue
+               << bsoncxx::builder::stream::close_document;
   }
+  doc_update << bsoncxx::builder::stream::finalize;
 }
 
 

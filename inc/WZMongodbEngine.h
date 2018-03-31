@@ -3,27 +3,30 @@
 // Author : huziang
 // this is a mongodb database complete
 
-#ifndef WZUTIL_WZDATAENGINE_H_
-#define WZUTIL_WZDATAENGINE_H_
+#ifndef WZUTIL_WZMONGODBENGINE_H_
+#define WZUTIL_WZMONGODBENGINE_H_
 
 #include <mongocxx/client.hpp>
-#include <map>
+#include <bsoncxx/builder/stream/document.hpp>
 #include "WZDataEngine.h"
+
+using bsoncxx::builder::stream::document;
 
 class MongodbEngine : public DataEngine {
  public:
   static DataEngine* getInstance();
+  int find(vector<map<string, string>> &mds, const document &doc);   // find by bson
 
-  // type TSMarketDataField
+  // virtual function complete
   int insert_one(const map<string, string> &);
-  int insert_many(const vector<map<string, string>> &);
-  int update_one(KeyValue, vector<KeyValue> &) = 0;
-  int update_many(KeyValue, vector<KeyValue> &) = 0;
-  int find(vector<map<string, string>> &, vector<KeyValue> &, const char ID[20] = "\0");
-  // int find(vector<TSMarketDataField*> &, vector<KeyValue> &, const char ID[20] = "\0") = 0;
+  int insert_many(const vector<std::map<string, string>> &);
+  int update_one(const KeyValue &, const vector<KeyValue> &);
+  int update_many(const KeyValue &, const vector<KeyValue> &);
+  int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0");
+  int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0");
 
  private:
   mongocxx::client *conn;
 };
 
-#endif  // WZUTIL_WZDATAENGINE_H_
+#endif  // WZUTIL_WZMONGODBENGINE_H_

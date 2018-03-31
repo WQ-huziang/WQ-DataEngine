@@ -1,14 +1,18 @@
+//
+//
+// Author : luojunbin
+//
+
 #ifndef DATAPARSE_H_
 #define DATAPARSE_H_
 
 #include <iostream>
-#include <vector>
 #include <string>
 #include <map>
 
-#include "/opt/rapidjson/include/rapidjson/document.h"
-#include "/opt/rapidjson/include/rapidjson/writer.h"
-#include "/opt/rapidjson/include/rapidjson/stringbuffer.h"
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
 
 #include "wzdatastruct.h"
 #include "transportstruct.h"
@@ -22,23 +26,21 @@ using std::pair;
 inline int parseTo(map<string, string> &my_map, string &json)
 {
   Document doc;
-    doc.Parse((char*)json.c_str());
+  doc.Parse((char*)json.c_str());
 
-    pair<string, string> tmp;
-  for (Value::ConstMemberIterator itr = doc.MemberBegin();
-      itr != doc.MemberEnd(); ++itr)
-  {
-    tmp.first = itr->name.GetString();
-    if (itr->value.GetType() == 6)
+  pair<string, string> tmp;
+  char num_value[20];
+  for (Value::ConstMemberIterator it = doc.MemberBegin();
+      it != doc.MemberEnd(); ++it) {
+    tmp.first = it->name.GetString();
+    if (it->value.GetType() == 6)
     {
-      char *num_value = new char[20];
-      sprintf(num_value, "%f", itr->value.GetDouble());
+      sprintf(num_value, "%f", it->value.GetDouble());
       tmp.second = num_value;
-      delete[] num_value;
     }
     else
     {
-      tmp.second = itr->value.GetString();
+      tmp.second = it->value.GetString();
     }
     my_map.insert(tmp);
   }
@@ -139,7 +141,7 @@ inline int parseFrom(map<string, string> &my_map, WZRtnOrderField &res)
 
 inline int parseFrom(map<string, string> &my_map, TSRtnOrderField &res)
 {
-  char num_value[20] = new char[20];
+  char num_value[20];
   my_map.insert(pair<string, string> ("InstrumentID", res.InstrumentID));
   my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));
 

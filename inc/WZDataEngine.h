@@ -8,9 +8,11 @@
 
 #include <cstring>
 #include <iostream>
+#include <map>
 #include "transportstruct.h"
 using std::vector;
-using std::pair;
+using std::string;
+using std::map;
 
 struct KeyValue {
   string key;
@@ -20,24 +22,24 @@ struct KeyValue {
 
 class DataEngine {
  public:
-  static DataEngine* getInstance() = 0;
   inline void setLibname(const char lib[20]) { strcpy(libname, lib); }
   inline void setTablename(const char table[20]) { strcpy(tablename, table); }
 
-  // type TSMarketDataField
-  int insert_one(const map<string, string>) = 0;
-  int insert_many(const vector<std::map<string, string>> &) = 0;
-  int update_one(KeyValue, vector<KeyValue> &) = 0;
-  int update_many(KeyValue, vector<KeyValue> &) = 0;
-  int find(vector<map<string, string>> &, vector<KeyValue> &, const char ID[20] = "\0") = 0;
-  // int find(vector<TSMarketDataField*> &, vector<KeyValue> &, const char ID[20] = "\0") = 0;
-  //bool delete_one(const WZStoredFrame &, const char tablename[20]) = 0;
-  //bool delete_many(const vector<WZStoredFrame> &, const char tablename[20]) = 0;
+  // using map and vector<map> to translate all kinds of struct
+  virtual int insert_one(const map<string, string> &) = 0;
+  virtual int insert_many(const vector<std::map<string, string>> &) = 0;
+  virtual int update_one(const KeyValue &, const vector<KeyValue> &) = 0;
+  virtual int update_many(const KeyValue &, const vector<KeyValue> &) = 0;
+  virtual int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0") = 0;
+  virtual int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0") = 0;
 
- private:
-  static DataEngine *instance = NULL;
-  const char libname[20];
-  const char tablename[20];
+ protected:
+  DataEngine() {}
+  static DataEngine *instance;
+  char libname[20];
+  char tablename[20];
 };
+
+DataEngine *DataEngine::instance = NULL;
 
 #endif  // WZUTIL_WZDATAENGINE_H_
