@@ -8,6 +8,11 @@
 #include <bsoncxx/json.hpp>
 #include <mongocxx/instance.hpp>
 #include "ToDocuments.h"
+#include "rapidjson.h"
+#include "/opt/rapidjson/include/rapidjson/document.h"
+#include "/opt/rapidjson/include/rapidjson/writer.h"
+#include "/opt/rapidjson/include/rapidjson/stringbuffer.h"
+#include "DataParse.h"
 
 using bsoncxx::document::value;
 using mongocxx::cursor;
@@ -15,6 +20,9 @@ using bsoncxx::builder::stream::document;
 using bsoncxx::builder::stream::finalize;
 using bsoncxx::builder::stream::open_array;
 using bsoncxx::builder::stream::open_document;
+using rapidjson::Document;
+using rapidjson::StringBuffer;
+using rapidjson::Writer;
 
 DataEngine* MongodbEngine::getInstance() {
   if (instance == NULL) {
@@ -89,6 +97,13 @@ int MongodbEngine::find(vector<map<string, string>> &mds, document *doc) {
     return -1;
   }
   for(auto cur : cursor){
-
+    string str_json = bsoncxx::to_json(cur);
+    map<string, string> result;
+    int ret = parseTo(result, str_json);
+    if(ret){
+      return -1;
+    }
+    mds.push_back(result);
   }
+  return 0;
 }

@@ -28,48 +28,37 @@
 //     double     AskPrice1;             //申卖价一
 //     int        AskVolume1;            //申卖量一
 // };
+#include <iostream>
+#include <map>
+#include <string.h>
+using namespace std;
+using bsoncxx::builder::stream::document;
+
+struct KeyValue {
+  string key;
+  string minvalue;
+  string maxvalue;
+};
 
 #ifndef WZUTIL_TODOCUMENT_H_
 #define WZUTIL_TODOCUMENT_H_
 
 using bsoncxx::builder::stream::document;
 
-void toDocument(const map<string, string> md, document *doc) {
-  map<string, string>::iterator it;
-  for(it = md.begin; it != md.end(); it++){
-    (*doc) << it->first << it->second << bsoncxx::builder::stream::finalize;
+void toDocument(const map<string, string> &md, document *doc) {
+  map<string, string>::const_iterator it = md.begin();
+  for(it; it != md.end(); it++){
+    (*doc) << it->first << it->second;
   }
-  // (*doc) << bsoncxx::builder::stream::finalize;
-  // (*doc) << "TradingDay" << pMd->TradingDay
-  //      << "InstrumentID" << pMd->InstrumentID
-  //      << "LastPrice" << pMd->LastPrice
-  //      << "PreSettlementPrice" << pMd->LastPrice
-  //      << "PreClosePrice" << pMd->PreClosePrice
-  //      << "PreOpenInterest" << pMd->PreOpenInterest
-  //      << "OpenPrice" << pMd->OpenPrice
-  //      << "HighestPrice" << pMd->HighestPrice
-  //      << "LowestPrice" << pMd->LowestPrice
-  //      << "Volume" << pMd->Volume
-  //      << "Turnover" << pMd->Turnover
-  //      << "OpenInterest" << pMd->OpenInterest
-  //      << "ClosePrice" << pMd->ClosePrice
-  //      << "SettlementPrice" << pMd->SettlementPrice
-  //      << "UpperLimitPrice" << pMd->UpperLimitPrice
-  //      << "LowerLimitPrice" << pMd->LowerLimitPrice
-  //      << "UpdateTime" << pMd->UpdateTime
-  //      << "UpdateMillisec" << pMd->UpdateMillisec
-  //      << "BidPrice1" << pMd->BidPrice1
-  //      << "BidVolume1" << pMd->BidVolume1
-  //      << "AskPrice1" << pMd->AskPrice1
-  //      << "AskVolume1" << pMd->AskVolume1
-  //      << bsoncxx::builder::stream::finalize;
+  (*doc) << bsoncxx::builder::stream::finalize;
 }
 
 void toDocument(const vector<map<string, string>> & vmd, vector<document> & docs) {
-  int length = vTSMd.size();
-  for(int index=0; index<length; index++){
+  vector<map<string, string>>::const_iterator it = vmd.begin();
+  for(; it != vmd.end(); it++){
     document doc;
-    toDocument(vTSMd[index], doc);
+
+    toDocument(*it, &doc);
     docs.push_back(doc);
   }
 }
@@ -79,7 +68,7 @@ void toDocument(const vector<map<string, string>> & vmd, vector<document> & docs
 //ID: instrument id
 void toDocument(vector<KeyValue> &find, const char ID[20], document *doc) {
   vector<KeyValue>::iterator it;
-  for(it = find.begin; it != find.end(); it++){
+  for(it = find.begin(); it != find.end(); it++){
     if(it -> maxvalue != ""){
       if(strlen(ID) != 0){
         (*doc) << it ->key << bsoncxx::builder::stream::open_document
@@ -102,22 +91,22 @@ void toDocument(vector<KeyValue> &find, const char ID[20], document *doc) {
 }
 
 //update one
-void toDocument(const KeyValue &find, const vector<KeyValue> &value, document &doc_find, document &doc_update){
+void toDocument(KeyValue *find, vector<KeyValue> & value, document *doc_find, document *doc_update){
   if(find -> maxvalue != ""){
-    doc_find << find.key << bsoncxx::builder::stream::open_document
-          << "$gte" << find.minvalue
-          << "$lte" << find.maxvalue
+    (*doc_find) << find->key << bsoncxx::builder::stream::open_document
+          << "$gte" << find->minvalue
+          << "$lte" << find->maxvalue
           << bsoncxx::builder::stream::close_document
           << bsoncxx::builder::stream::finalize;
   } else {
-    doc_update << find.key << find.minvalue << bsoncxx::builder::stream::finalize;
+    (*doc_update) << find->key << find->minvalue << bsoncxx::builder::stream::finalize;
   }
-  int length = value.size();
-  for(int index=0; index<length; index++){
-    doc_update << "$set" << bsoncxx::builder::stream::open_document
-               << value[index].key << value[index].minvalue
-               << bsoncxx::builder::stream::close_document
-               << bsoncxx::builder::stream::finalize;
+  vector<KeyValue>::iterator it;
+  for(it = value.begin(); it != value.end(); it++){
+    (*doc_update) << "$set" << bsoncxx::builder::stream::open_document
+                  << it->key << it->minvalue
+                  << bsoncxx::builder::stream::close_document
+                  << bsoncxx::builder::stream::finalize;
   }
 }
 
