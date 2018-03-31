@@ -1,15 +1,12 @@
-SET(MAIN_FILE parsetest)
+SET(MAIN_FILE mongodbenginetest)
+SET(GTEST_LIB gtest gflags pthread gtest_main)
+SET(TEST_LIBS
+  WZMongodbEngine
+  mongocxx
+  bsoncxx
+)
 
-SET(THREADS_PREFER_PTHREAD_FLAG ON)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g")  
-
-FOREACH(f ${CLASS_FILE})
-	ADD_LIBRARY(${f} SHARED ${f}.cpp)
-ENDFOREACH(f)
-
-FIND_PACKAGE(Threads REQUIRED)
-
+# link all .so
 LINK_DIRECTORIES(${LIBRARY_OUTPUT_PATH})
 ADD_EXECUTABLE(${MAIN_FILE} ${MAIN_FILE}.cpp)
-TARGET_LINK_LIBRARIES(${MAIN_FILE} Threads::Threads)
+TARGET_LINK_LIBRARIES(${MAIN_FILE} ${GTEST_LIB} ${TEST_LIBS})

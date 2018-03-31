@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11 -g -std=c++11 -g   CMakeFiles/parsetest.dir/parsetest.cpp.o  -o ../../bin/parsetest  -L/home/huziang/Desktop/WZDataEngine/lib -pthread -Wl,-rpath,/home/huziang/Desktop/WZDataEngine/lib 

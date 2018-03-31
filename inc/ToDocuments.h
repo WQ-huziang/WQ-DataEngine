@@ -55,15 +55,12 @@ void toDocument(const map<string, string> &md, document &doc) {
   for (auto &it : md) {
     doc << it.first << it.second;
   }
-  doc << bsoncxx::builder::stream::finalize;
 }
 
 void toDocument(const vector<map<string, string>> & vmd, vector<bsoncxx::document::value> & docvs) {
   document doc {};
   for (auto &md : vmd) {
-    for (auto &it : md) {
-      doc << it.first << it.second;
-    }
+    toDocument(md, doc);
     docvs.push_back(doc << bsoncxx::builder::stream::finalize);
     doc.clear();
   }
@@ -79,7 +76,6 @@ void toDocument(const vector<KeyValue> &find, const char ID[20], document &doc) 
   for(auto &it : find){
     keyvalueToDocument(it, doc);
   }
-  doc << bsoncxx::builder::stream::finalize;
 }
 
 //update one
@@ -87,14 +83,12 @@ void toDocument(const KeyValue &find, const vector<KeyValue> & value, document &
   if (find.maxvalue != "") {
     keyvalueToDocument(find, doc_find);
   }
-  doc_find << bsoncxx::builder::stream::finalize;
 
   for(auto &it : value){
     doc_update << "$set" << bsoncxx::builder::stream::open_document
                << it.key << it.minvalue
                << bsoncxx::builder::stream::close_document;
   }
-  doc_update << bsoncxx::builder::stream::finalize;
 }
 
 

@@ -10,12 +10,16 @@
 #include "DataParse.h"
 
 using mongocxx::cursor;
+using bsoncxx::builder::stream::finalize;
+
+MongodbEngine::MongodbEngine() {
+  mongocxx::instance inst{};
+  conn = mongocxx::client(mongocxx::uri("mongodb://localhost:27017"));
+}
 
 DataEngine* MongodbEngine::getInstance() {
   if (instance == NULL) {
-    MongodbEngine *mginstance = new MongodbEngine();
-    mginstance->conn = new mongocxx::client(mongocxx::uri{});
-    instance = mginstance;
+    instance = new MongodbEngine();
   }
   return instance;
 }
@@ -26,9 +30,9 @@ int MongodbEngine::insert_one(const map<string, string> &md) {
   toDocument(md, doc);
 
   // get collection
-  mongocxx::database db = conn->database(libname);
+  mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
-  auto result = coll.insert_one(doc.view());
+  auto result = coll.insert_one(doc << finalize);
   return (bool)result;
 }
 
@@ -38,7 +42,7 @@ int MongodbEngine::insert_many(const vector<map<string, string>> &mds) {
   toDocument(mds, docvs);
 
   // get collection
-  mongocxx::database db = conn->database(libname);
+  mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
   auto result = coll.insert_many(docvs);
   return result->inserted_count();
@@ -51,9 +55,9 @@ int MongodbEngine::update_one(const KeyValue &filter, const vector<KeyValue> &up
   toDocument(filter, update, filterdoc, updatedoc);
 
   // get collection
-  mongocxx::database db = conn->database(libname);
+  mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
-  auto result = coll.update_one(filterdoc.view(), updatedoc.view());
+  auto result = coll.update_one(filterdoc << finalize, updatedoc << finalize);
   return (bool)result;
 }
 
@@ -64,9 +68,9 @@ int MongodbEngine::update_many(const KeyValue &filter, const vector<KeyValue> &u
   toDocument(filter, update, filterdoc, updatedoc);
 
   // get collection
-  mongocxx::database db = conn->database(libname);
+  mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
-  auto result = coll.update_many(filterdoc.view(), updatedoc.view());
+  auto result = coll.update_many(filterdoc << finalize, updatedoc << finalize);
   return result->modified_count();
 }
 
@@ -76,9 +80,9 @@ int MongodbEngine::find_one(map<string, string> &md, const vector<KeyValue> &con
   toDocument(condition, ID, doc);
 
   // get one collection
-  mongocxx::database db = conn->database(libname);
+  mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
-  auto result = coll.find_one(doc.view());
+  auto result = coll.find_one(doc << finalize);
   if (result) {
     string json = bsoncxx::to_json(result->view());
     parseTo(md, json);
@@ -93,9 +97,9 @@ int MongodbEngine::find_many(vector<map<string, string>> &mds, const vector<KeyV
   toDocument(condition, ID, doc);
 
   // get many collection
-  mongocxx::database db = conn->database(libname);
+  mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
-  mongocxx::cursor cursor = coll.find(doc.view());
+  mongocxx::cursor cursor = coll.find(doc << finalize);
 
   // go through all answer
   int num = 0;

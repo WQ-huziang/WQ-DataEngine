@@ -25,8 +25,11 @@ class MongodbEngine : public DataEngine {
   int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0");
   int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0");
 
+ protected:
+  MongodbEngine();
+
  private:
-  mongocxx::client *conn;
+  mongocxx::client conn;
 };
 
 #endif  // WZUTIL_WZMONGODBENGINE_H_
