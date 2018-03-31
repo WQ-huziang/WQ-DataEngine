@@ -34,35 +34,40 @@
 
 using bsoncxx::builder::stream::document;
 
-void toDocument(const TSMarketDataField &pMd, document &doc) {
-  doc << "TradingDay" << pMd.TradingDay
-      << "InstrumentID" << pMd.InstrumentID
-      << "LastPrice" << pMd.LastPrice
-      << "PreSettlementPrice" << pMd.LastPrice
-      << "PreClosePrice" << pMd.PreClosePrice
-      << "PreOpenInterest" << pMd.PreOpenInterest
-      << "OpenPrice" << pMd.OpenPrice
-      << "HighestPrice" << pMd.HighestPrice
-      << "LowestPrice" << pMd.LowestPrice
-      << "Volume" << pMd.Volume
-      << "Turnover" << pMd.Turnover
-      << "OpenInterest" << pMd.OpenInterest
-      << "ClosePrice" << pMd.ClosePrice
-      << "SettlementPrice" << pMd.SettlementPrice
-      << "UpperLimitPrice" << pMd.UpperLimitPrice
-      << "LowerLimitPrice" << pMd.LowerLimitPrice
-      << "UpdateTime" << pMd.UpdateTime
-      << "UpdateMillisec" << pMd.UpdateMillisec
-      << "BidPrice1" << pMd.BidPrice1
-      << "BidVolume1" << pMd.BidVolume1
-      << "AskPrice1" << pMd.AskPrice1
-      << "AskVolume1" << pMd.AskVolume1
-      << bsoncxx::builder::stream::finalize;
+void toDocument(const map<string, string> md, document *doc) {
+  map<string, string>::iterator it;
+  for(it = md.begin; it != md.end(); it++){
+    (*doc) << it->first << it->second << bsoncxx::builder::stream::finalize;
+  }
+  // (*doc) << bsoncxx::builder::stream::finalize;
+  // (*doc) << "TradingDay" << pMd->TradingDay
+  //      << "InstrumentID" << pMd->InstrumentID
+  //      << "LastPrice" << pMd->LastPrice
+  //      << "PreSettlementPrice" << pMd->LastPrice
+  //      << "PreClosePrice" << pMd->PreClosePrice
+  //      << "PreOpenInterest" << pMd->PreOpenInterest
+  //      << "OpenPrice" << pMd->OpenPrice
+  //      << "HighestPrice" << pMd->HighestPrice
+  //      << "LowestPrice" << pMd->LowestPrice
+  //      << "Volume" << pMd->Volume
+  //      << "Turnover" << pMd->Turnover
+  //      << "OpenInterest" << pMd->OpenInterest
+  //      << "ClosePrice" << pMd->ClosePrice
+  //      << "SettlementPrice" << pMd->SettlementPrice
+  //      << "UpperLimitPrice" << pMd->UpperLimitPrice
+  //      << "LowerLimitPrice" << pMd->LowerLimitPrice
+  //      << "UpdateTime" << pMd->UpdateTime
+  //      << "UpdateMillisec" << pMd->UpdateMillisec
+  //      << "BidPrice1" << pMd->BidPrice1
+  //      << "BidVolume1" << pMd->BidVolume1
+  //      << "AskPrice1" << pMd->AskPrice1
+  //      << "AskVolume1" << pMd->AskVolume1
+  //      << bsoncxx::builder::stream::finalize;
 }
 
-void toDocument(const vector<TSMarketDataField*> &vTSMd, vector<document> &docs) {
+void toDocument(const vector<map<string, string>> & vmd, vector<document> & docs) {
   int length = vTSMd.size();
-  for (int index=0; index<length; index++){
+  for(int index=0; index<length; index++){
     document doc;
     toDocument(vTSMd[index], doc);
     docs.push_back(doc);
@@ -72,16 +77,27 @@ void toDocument(const vector<TSMarketDataField*> &vTSMd, vector<document> &docs)
 //key: column name
 //value: lowerbound & upperbound
 //ID: instrument id
-void toDocument(const KeyValue &find, const char ID[20], document &doc) {
-  if(find.maxvalue != ""){
-    doc << find.key << bsoncxx::builder::stream::open_document
-        << "$gte" << find.minvalue
-        << "$lte" << find.maxvalue
-        << bsoncxx::builder::stream::close_document
-        << "InstrumentID" << ID
-        << bsoncxx::builder::stream::finalize;
-  } else{
-    doc << find.key << find.minvalue << "InstrumentID" << ID << bsoncxx::builder::stream::finalize;
+void toDocument(vector<KeyValue> &find, const char ID[20], document *doc) {
+  vector<KeyValue>::iterator it;
+  for(it = find.begin; it != find.end(); it++){
+    if(it -> maxvalue != ""){
+      if(strlen(ID) != 0){
+        (*doc) << it ->key << bsoncxx::builder::stream::open_document
+            << "$gte" << it->minvalue
+            << "$lte" << it->maxvalue
+            << bsoncxx::builder::stream::close_document
+            << "InstrumentID" << ID
+            << bsoncxx::builder::stream::finalize;
+      } else {
+        (*doc) << it->key << bsoncxx::builder::stream::open_document
+            << "$gte" << it->minvalue
+            << "$lte" << it->maxvalue
+            << bsoncxx::builder::stream::close_document
+            << bsoncxx::builder::stream::finalize;
+      }
+    } else {
+      (*doc) << it->key << it->minvalue << "InstrumentID" << ID << bsoncxx::builder::stream::finalize;
+    }
   }
 }
 
