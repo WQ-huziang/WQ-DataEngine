@@ -69,31 +69,16 @@ bool ione(){
   return true;
 }
 
-// TEST_F(TestMongodbEngine, insert_one)
-// {
-//   for(int i=0; i<100; i++){
-//     cout << i << endl;
-//     memset(pDepthMarketData, 0, sizeof(pDepthMarketData));
-//     pDepthMarketData->Volume = 999;
-//     parseFrom(ts, *pDepthMarketData);
-//     db->insert_one(ts);
-//   }
-//   map<string, string> ts2;
-//   KeyValue kv;
-//   kv.key = "Volume";
-//   kv.minvalue = "50";
-//   kv.maxvalue = "";
-//   filter.push_back(kv);
-//   char *instrumentid = {"\0"};
-//   db->find_one(ts2, filter, instrumentid);
-//   map<string, string>::iterator it1 = ts.begin();
-//   map<string, string>::iterator it2 = ts2.begin();
-//   cout << ts2.size() << endl;
-//   for(; it1 != ts.end(), it2 != ts2.end(); it1++, it2++){
-//     // cout << it1->first << ": " << it1->second << endl;
-//     cout << it2->first << ": " << it2->second << endl;
-//   }
-// }
+TEST_F(TestMongodbEngine, insert_one)
+{
+  for(int i=0; i<100; i++){
+    cout << i << endl;
+    memset(pDepthMarketData, 0, sizeof(pDepthMarketData));
+    pDepthMarketData->Volume = 999;
+    parseFrom(ts, *pDepthMarketData);
+    db->insert_one(ts);
+  }
+}
 
 // TEST_F(TestMongodbEngine, insert_many)
 // {
@@ -106,7 +91,6 @@ bool ione(){
 //     dataset.push_back(ts);
 //     ts.clear();
 //   }
-//   cout << dataset.size() << endl;
 //   db->insert_many(dataset);
 // }
 
@@ -155,9 +139,18 @@ TEST_F(TestMongodbEngine, find_many)
 //   filter.push_back(kv);
 //   char *instrumentid = {"\0"};
 //   // vector<map<string, string>> dataset2;
-//   db->delete_many(filter, instrumentid);
-
+//   db->delete_one(filter, instrumentid);
 // }
+
+// TEST_F(TestMongodbEngine, del_many)
+// {
+//   KeyValue kv;
+//   kv.key = "Volume";
+//   kv.minvalue = "999";
+//   filter.push_back(kv);
+//   char *instrumentid = {"\0"};
+//   // vector<map<string, string>> dataset2;
+//   db->delete_many(filter, instrumentid);
 
 int main(int argc,char *argv[])
 {
