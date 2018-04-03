@@ -29,7 +29,7 @@ class MongodbEngine : public DataEngine {
   int delete_many(const vector<KeyValue> &, const char ID[20] = "\0");
 
   // set index
-  int set_index(string &, int &);
+  int set_index(string, bool isascending = true);
 
  protected:
   MongodbEngine();
