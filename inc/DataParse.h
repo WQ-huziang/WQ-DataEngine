@@ -32,17 +32,13 @@ inline int parseTo(map<string, string> &my_map, string &json)
   char num_value[20];
   for (Value::ConstMemberIterator it = doc.MemberBegin();
       it != doc.MemberEnd(); ++it) {
-    tmp.first = it->name.GetString();
-    if (it->value.GetType() == 6)
+    if (it->value.IsString())
     {
-      sprintf(num_value, "%f", it->value.GetDouble());
-      tmp.second = num_value;
-    }
-    else
-    {
+      tmp.first = it->name.GetString();
       tmp.second = it->value.GetString();
+      my_map.insert(tmp);
     }
-    my_map.insert(tmp);
+    
   }
   return 0;
 }
@@ -160,6 +156,64 @@ inline int parseFrom(map<string, string> &my_map, TSRtnOrderField &res)
   my_map.insert(pair<string, string> ("OffsetFlag", num_value));
   sprintf(num_value, "%c", res.OrderStatus);
   my_map.insert(pair<string, string> ("OrderStatus", num_value));
+
+  return 0;
+}
+
+inline int parseFrom(map<string, string> &my_map, WZRtnTradeField &res)
+{
+  char num_value[20];
+
+  my_map.insert(pair<string, string> ("BrokerID", res.BrokerID));
+  my_map.insert(pair<string, string> ("UserID", res.UserID));
+  my_map.insert(pair<string, string> ("InvestorID", res.InvestorID));
+  my_map.insert(pair<string, string> ("BusinessUnit", res.BusinessUnit));
+  my_map.insert(pair<string, string> ("InstrumentID", res.InstrumentID));
+  my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));
+  my_map.insert(pair<string, string> ("ExchangeID", res.ExchangeID));
+  my_map.insert(pair<string, string> ("TradeID", res.TradeID));
+  my_map.insert(pair<string, string> ("OrderSysID", res.OrderSysID));
+  my_map.insert(pair<string, string> ("ParticipantID", res.ParticipantID));
+  my_map.insert(pair<string, string> ("ClientID", res.ClientID));
+
+  sprintf(num_value, "%f", res.Price);
+  my_map.insert(pair<string, string> ("Price", num_value));
+  sprintf(num_value, "%d", res.Volume);
+  my_map.insert(pair<string, string> ("Volume", num_value));
+
+  my_map.insert(pair<string, string> ("TradingDay", res.TradingDay));
+  my_map.insert(pair<string, string> ("TradeTime", res.TradeTime));
+
+  sprintf(num_value, "%c", res.Direction);
+  my_map.insert(pair<string, string> ("Direction", num_value));
+  sprintf(num_value, "%c", res.OffsetFlag);
+  my_map.insert(pair<string, string> ("OffsetFlag", num_value));
+  sprintf(num_value, "%c", res.HedgeFlag);
+  my_map.insert(pair<string, string> ("HedgeFlag", num_value));
+
+  return 0;
+}
+
+inline int parseFrom(map<string, string> &my_map, TSRtnTradeField &res)
+{
+  char num_value[20];
+
+  my_map.insert(pair<string, string> ("InstrumentID", res.InstrumentID));
+  my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));
+
+  sprintf(num_value, "%f", res.Price);
+  my_map.insert(pair<string, string> ("Price", num_value));
+  sprintf(num_value, "%d", res.Volume);
+  my_map.insert(pair<string, string> ("Volume", num_value));
+
+
+  my_map.insert(pair<string, string> ("TradingDay", res.TradingDay));
+  my_map.insert(pair<string, string> ("TradeTime", res.TradeTime));
+
+  sprintf(num_value, "%c", res.Direction);
+  my_map.insert(pair<string, string> ("Direction", num_value));
+  sprintf(num_value, "%c", res.OffsetFlag);
+  my_map.insert(pair<string, string> ("OffsetFlag", num_value));
 
   return 0;
 }

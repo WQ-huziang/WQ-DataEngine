@@ -25,6 +25,9 @@ class MongodbEngine : public DataEngine {
   int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0");
   int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0");
 
+  // set index
+  int set_index(string &, int &);
+
  protected:
   MongodbEngine();
 

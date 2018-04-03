@@ -115,3 +115,18 @@ int MongodbEngine::find_many(vector<map<string, string>> &mds, const vector<KeyV
 
   return num;
 }
+
+int MongodbEngine::set_index(string &index, int &type) {
+  // get document
+  document doc{};
+  auto index_specification = doc << index << type << finalize;
+
+  // get one collection
+  mongocxx::database db = conn.database(libname);
+  mongocxx::collection coll = db[tablename];
+
+  // create index
+  coll.create_index(std::move(index_specification));
+
+  return 0;
+}

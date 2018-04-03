@@ -21,12 +21,12 @@ DataEngine *db = NULL;
 FILE *fp = NULL;
 TSMarketDataField *pDepthMarketData = NULL;
 
-mongocxx::instance inst{};
+//mongocxx::instance inst{};
 mongocxx::client conn = mongocxx::client(mongocxx::uri("mongodb://localhost:27017"));
 mongocxx::collection collection = conn["test"]["TSMarketDataField"];
 
 map<string, string> ts;
-map<KeyValue> kv;
+//map<KeyValue> kv;
 
 void find_all() {
 
@@ -59,15 +59,27 @@ class TestMongodbEngine : public testing::Test
   {
     delete pDepthMarketData;
     ts.clear();
-    kv.clear();
+    //kv.clear();
   }
 };
 
 TEST_F(TestMongodbEngine, insert_one)
 {
-  fread(pDepthMarketData, sizeof(TSMarketDataField), 1, fp);
-  parseFrom(ts, pDepthMarketData);
-  insert_one(ts);
+  //fread(pDepthMarketData, sizeof(TSMarketDataField), 1, fp);
+  for (int i=0; i<100; i++){
+    memset(pDepthMarketData, 0, sizeof(pDepthMarketData));
+    pDepthMarketData->Volume = i;
+    parseFrom(ts, *pDepthMarketData);
+    db->insert_one(ts);
+  }
+}
+
+TEST_F(TestMongodbEngine, insert_many)
+{
+  //fread(pDepthMarketData, sizeof(TSMarketDataField), 1, fp);
+  for (int i=0; i<100; i++){
+    
+  }
 }
 
 int main(int argc,char *argv[])

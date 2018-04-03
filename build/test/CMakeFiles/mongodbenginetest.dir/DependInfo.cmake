@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/huziang/Desktop/WZDataEngine/test/mongodbenginetest.cpp" "/home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o"
+  "/home/luojunbin/project/WQ_project/DataEngine/test/mongodbenginetest.cpp" "/home/luojunbin/project/WQ_project/DataEngine/build/test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -19,7 +19,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/huziang/Desktop/WZDataEngine/build/src/CMakeFiles/WZMongodbEngine.dir/DependInfo.cmake"
+  "/home/luojunbin/project/WQ_project/DataEngine/build/src/CMakeFiles/WZMongodbEngine.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

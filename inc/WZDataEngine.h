@@ -33,6 +33,9 @@ class DataEngine {
   virtual int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0") = 0;
   virtual int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0") = 0;
 
+  // set index
+  virtual int set_index(string &, int &) = 0;
+
  protected:
   DataEngine() {}
   static DataEngine *instance;

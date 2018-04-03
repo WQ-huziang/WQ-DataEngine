@@ -1,4 +1,4 @@
-# Install script for directory: /home/huziang/Desktop/WZDataEngine/test
+# Install script for directory: /home/luojunbin/project/WQ_project/DataEngine/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

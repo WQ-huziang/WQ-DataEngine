@@ -1,4 +1,4 @@
-# Install script for directory: /home/huziang/Desktop/WZDataEngine
+# Install script for directory: /home/luojunbin/project/WQ_project/DataEngine
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,8 +34,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/huziang/Desktop/WZDataEngine/build/src/cmake_install.cmake")
-  include("/home/huziang/Desktop/WZDataEngine/build/test/cmake_install.cmake")
+  include("/home/luojunbin/project/WQ_project/DataEngine/build/src/cmake_install.cmake")
+  include("/home/luojunbin/project/WQ_project/DataEngine/build/test/cmake_install.cmake")
 
 endif()
 
@@ -47,5 +47,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/huziang/Desktop/WZDataEngine/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/luojunbin/project/WQ_project/DataEngine/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
