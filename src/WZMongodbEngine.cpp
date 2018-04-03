@@ -29,7 +29,7 @@ void MongodbEngine::init() {
 
 int MongodbEngine::insert_one(const map<string, string> &md) {
   // get document
-  document doc {};
+  document doc;
   toDocument(md, doc);
 
   // get collection
@@ -87,7 +87,7 @@ int MongodbEngine::find_one(map<string, string> &md, const vector<KeyValue> &con
   mongocxx::collection coll = db[tablename];
   auto result = coll.find_one(doc << finalize);
   if (result) {
-    string json = bsoncxx::to_json(result->view());
+    string json = bsoncxx::to_json(*result);
     parseTo(md, json);
     return 1;
   }
@@ -146,10 +146,10 @@ int MongodbEngine::delete_many(const vector<KeyValue> &condition, const char ID[
   return 0;
 }
 
-int MongodbEngine::set_index(string &index, int &type) {
+int MongodbEngine::set_index(string index, bool isascending) {
   // get document
   document doc{};
-  auto index_specification = doc << index << type << finalize;
+  auto index_specification = doc << index << int(isascending ? 1 : -1) << finalize;
 
   // get one collection
   mongocxx::database db = conn.database(libname);

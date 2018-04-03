@@ -18,6 +18,11 @@ struct KeyValue {
   string key;
   string minvalue;
   string maxvalue;
+
+  KeyValue(const string _key, const string _minvalue, const string _maxvalue = "")
+    : key(_key),
+      minvalue(_minvalue),
+      maxvalue(_maxvalue) {}
 };
 
 class DataEngine {
@@ -37,7 +42,7 @@ class DataEngine {
   virtual int delete_many(const vector<KeyValue> &, const char ID[20] = "\0") = 0;
 
   // set index
-  virtual int set_index(string &, int &) = 0;
+  virtual int set_index(string, bool isascending = true) = 0;
 
  protected:
   DataEngine() {}
