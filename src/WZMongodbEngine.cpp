@@ -13,8 +13,7 @@ using mongocxx::cursor;
 using bsoncxx::builder::stream::finalize;
 
 MongodbEngine::MongodbEngine() {
-  mongocxx::instance inst{};
-  conn = mongocxx::client(mongocxx::uri("mongodb://localhost:27017"));
+
 }
 
 DataEngine* MongodbEngine::getInstance() {
@@ -22,6 +21,11 @@ DataEngine* MongodbEngine::getInstance() {
     instance = new MongodbEngine();
   }
   return instance;
+}
+
+void MongodbEngine::init() {
+  mongocxx::instance inst{};
+  conn = mongocxx::client(mongocxx::uri("mongodb://localhost:27017"));
 }
 
 int MongodbEngine::insert_one(const map<string, string> &md) {
@@ -114,6 +118,34 @@ int MongodbEngine::find_many(vector<map<string, string>> &mds, const vector<KeyV
   }
 
   return num;
+}
+
+int MongodbEngine::delete_one(const vector<KeyValue> &condition, const char ID[20] = "\0") {
+  // get document
+  document doc {};
+  toDocument(condition, ID, doc);
+
+  // get one collection
+  mongocxx::database db = conn.database(libname);
+  mongocxx::collection coll = db[tablename];
+  auto result = coll.delete_one(doc << finalize);
+  return (bool)result;
+}
+
+int MongodbEngine::delete_many(const vector<KeyValue> &, const char ID[20] = "\0") {
+  // get document
+  document doc {};
+  toDocument(condition, ID, doc);
+
+  // get many collection
+  mongocxx::database db = conn.database(libname);
+  mongocxx::collection coll = db[tablename];
+  mongocxx::cursor cursor = coll.find(doc << finalize);
+
+  if (result) {
+    return result->deleted_count();
+  }
+  return 0;
 }
 
 int MongodbEngine::set_index(string &index, int &type) {

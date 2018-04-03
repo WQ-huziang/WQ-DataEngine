@@ -26,12 +26,15 @@ class DataEngine {
   inline void setTablename(const char table[20]) { strcpy(tablename, table); }
 
   // using map and vector<map> to translate all kinds of struct
+  virtual void init() = 0;
   virtual int insert_one(const map<string, string> &) = 0;
   virtual int insert_many(const vector<std::map<string, string>> &) = 0;
   virtual int update_one(const KeyValue &, const vector<KeyValue> &) = 0;
   virtual int update_many(const KeyValue &, const vector<KeyValue> &) = 0;
   virtual int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0") = 0;
   virtual int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0") = 0;
+  virtual int delete_one(const vector<KeyValue> &, const char ID[20] = "\0") = 0;
+  virtual int delete_many(const vector<KeyValue> &, const char ID[20] = "\0") = 0;
 
   // set index
   virtual int set_index(string &, int &) = 0;
