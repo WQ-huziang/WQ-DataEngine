@@ -13,7 +13,6 @@ using mongocxx::cursor;
 using bsoncxx::builder::stream::finalize;
 
 MongodbEngine::MongodbEngine() {
-
 }
 
 DataEngine* MongodbEngine::getInstance() {

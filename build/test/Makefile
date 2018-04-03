@@ -111,6 +111,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+test/CMakeFiles/hu_gtest.dir/rule:
+	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/hu_gtest.dir/rule
+.PHONY : test/CMakeFiles/hu_gtest.dir/rule
+
+# Convenience name for target.
+hu_gtest: test/CMakeFiles/hu_gtest.dir/rule
+
+.PHONY : hu_gtest
+
+# fast build rule for target.
+hu_gtest/fast:
+	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/build
+.PHONY : hu_gtest/fast
+
+# Convenience name for target.
 test/CMakeFiles/mongodbenginetest.dir/rule:
 	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mongodbenginetest.dir/rule
 .PHONY : test/CMakeFiles/mongodbenginetest.dir/rule
@@ -124,6 +139,33 @@ mongodbenginetest: test/CMakeFiles/mongodbenginetest.dir/rule
 mongodbenginetest/fast:
 	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/build
 .PHONY : mongodbenginetest/fast
+
+hu_gtest.o: hu_gtest.cpp.o
+
+.PHONY : hu_gtest.o
+
+# target to build an object file
+hu_gtest.cpp.o:
+	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/hu_gtest.cpp.o
+.PHONY : hu_gtest.cpp.o
+
+hu_gtest.i: hu_gtest.cpp.i
+
+.PHONY : hu_gtest.i
+
+# target to preprocess a source file
+hu_gtest.cpp.i:
+	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/hu_gtest.cpp.i
+.PHONY : hu_gtest.cpp.i
+
+hu_gtest.s: hu_gtest.cpp.s
+
+.PHONY : hu_gtest.s
+
+# target to generate assembly for a file
+hu_gtest.cpp.s:
+	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/hu_gtest.cpp.s
+.PHONY : hu_gtest.cpp.s
 
 mongodbenginetest.o: mongodbenginetest.cpp.o
 
@@ -160,7 +202,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... hu_gtest"
 	@echo "... mongodbenginetest"
+	@echo "... hu_gtest.o"
+	@echo "... hu_gtest.i"
+	@echo "... hu_gtest.s"
 	@echo "... mongodbenginetest.o"
 	@echo "... mongodbenginetest.i"
 	@echo "... mongodbenginetest.s"

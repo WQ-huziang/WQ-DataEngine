@@ -137,6 +137,19 @@ WZMongodbEngine/fast:
 .PHONY : WZMongodbEngine/fast
 
 #=============================================================================
+# Target rules for targets named hu_gtest
+
+# Build rule for target.
+hu_gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hu_gtest
+.PHONY : hu_gtest
+
+# fast build rule for target.
+hu_gtest/fast:
+	$(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/build
+.PHONY : hu_gtest/fast
+
+#=============================================================================
 # Target rules for targets named mongodbenginetest
 
 # Build rule for target.
@@ -159,6 +172,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... WZMongodbEngine_static"
 	@echo "... WZMongodbEngine"
+	@echo "... hu_gtest"
 	@echo "... mongodbenginetest"
 .PHONY : help
 

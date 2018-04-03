@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/hu_gtest.dir/hu_gtest.cpp.o  -o ../../bin/hu_gtest  -L/home/huziang/Desktop/WZDataEngine/lib -lgtest -lgflags -lpthread -lgtest_main ../../lib/libWZMongodbEngine.so.1.1 -lmongocxx -lbsoncxx -Wl,-rpath,/home/huziang/Desktop/WZDataEngine/lib 

@@ -117,5 +117,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/WZMongodbEngine_static.dir/DependInfo.cmake"
   "src/CMakeFiles/WZMongodbEngine.dir/DependInfo.cmake"
+  "test/CMakeFiles/hu_gtest.dir/DependInfo.cmake"
   "test/CMakeFiles/mongodbenginetest.dir/DependInfo.cmake"
   )

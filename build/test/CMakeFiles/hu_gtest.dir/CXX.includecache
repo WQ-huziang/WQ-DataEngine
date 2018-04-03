@@ -270,8 +270,14 @@ wzdatastruct.h
 wzconstant.h
 ../inc/wzconstant.h
 
+<<<<<<< HEAD:build/test/CMakeFiles/mongodbenginetest.dir/CXX.includecache
 /home/huziang/Desktop/WZDataEngine/test/mongodbenginetest.cpp
+=======
+/home/huziang/Desktop/WZDataEngine/test/hu_gtest.cpp
+>>>>>>> huziang_gtest:build/test/CMakeFiles/hu_gtest.dir/CXX.includecache
 iostream
+-
+cmath
 -
 map
 -
