@@ -38,7 +38,7 @@ inline int parseTo(map<string, string> &my_map, string &json)
       tmp.second = it->value.GetString();
       my_map.insert(tmp);
     }
-    
+
   }
   return 0;
 }
@@ -50,43 +50,43 @@ inline int parseFrom(map<string, string> &my_map, TSMarketDataField &res)
   my_map.insert(pair<string, string>("TradingDay", res.TradingDay));
   my_map.insert(pair<string, string>("InstrumentID", res.InstrumentID));
 
-  sprintf(num_value, "%f", res.LastPrice);
+  sprintf(num_value, "%lf", res.LastPrice);
   my_map.insert(pair<string, string>("LastPrice", num_value));
-  sprintf(num_value, "%f", res.PreSettlementPrice);
+  sprintf(num_value, "%lf", res.PreSettlementPrice);
   my_map.insert(pair<string, string>("PreSettlementPrice", num_value));
-  sprintf(num_value, "%f", res.PreClosePrice);
+  sprintf(num_value, "%lf", res.PreClosePrice);
   my_map.insert(pair<string, string>("PreClosePrice", num_value));
-  sprintf(num_value, "%f", res.PreOpenInterest);
+  sprintf(num_value, "%lf", res.PreOpenInterest);
   my_map.insert(pair<string, string>("PreOpenInterest", num_value));
-  sprintf(num_value, "%f", res.OpenPrice);
+  sprintf(num_value, "%lf", res.OpenPrice);
   my_map.insert(pair<string, string>("OpenPrice", num_value));
-  sprintf(num_value, "%f", res.HighestPrice);
+  sprintf(num_value, "%lf", res.HighestPrice);
   my_map.insert(pair<string, string>("HighestPrice", num_value));
-  sprintf(num_value, "%f", res.LowestPrice);
+  sprintf(num_value, "%lf", res.LowestPrice);
   my_map.insert(pair<string, string>("LowestPrice", num_value));
   sprintf(num_value, "%d", res.Volume);
   my_map.insert(pair<string, string>("Volume", num_value));
-  sprintf(num_value, "%f", res.Turnover);
+  sprintf(num_value, "%lf", res.Turnover);
   my_map.insert(pair<string, string>("Turnover", num_value));
-  sprintf(num_value, "%f", res.OpenInterest);
+  sprintf(num_value, "%lf", res.OpenInterest);
   my_map.insert(pair<string, string>("OpenInterest", num_value));
-  sprintf(num_value, "%f", res.ClosePrice);
+  sprintf(num_value, "%lf", res.ClosePrice);
   my_map.insert(pair<string, string>("ClosePrice", num_value));
-  sprintf(num_value, "%f", res.SettlementPrice);
+  sprintf(num_value, "%lf", res.SettlementPrice);
   my_map.insert(pair<string, string>("SettlementPrice", num_value));
-  sprintf(num_value, "%f", res.UpperLimitPrice);
+  sprintf(num_value, "%lf", res.UpperLimitPrice);
   my_map.insert(pair<string, string>("UpperLimitPrice", num_value));
-  sprintf(num_value, "%f", res.LowerLimitPrice);
+  sprintf(num_value, "%lf", res.LowerLimitPrice);
   my_map.insert(pair<string, string>("LowerLimitPrice", num_value));
 
   my_map.insert(pair<string, string>("UpdateTime", res.UpdateTime));
   sprintf(num_value, "%d", res.UpdateMillisec);
   my_map.insert(pair<string, string>("UpdateMillisec", num_value));
-  sprintf(num_value, "%f", res.BidPrice1);
+  sprintf(num_value, "%lf", res.BidPrice1);
   my_map.insert(pair<string, string>("BidPrice1", num_value));
   sprintf(num_value, "%d", res.BidVolume1);
   my_map.insert(pair<string, string>("BidVolume1", num_value));
-  sprintf(num_value, "%f", res.AskPrice1);
+  sprintf(num_value, "%lf", res.AskPrice1);
   my_map.insert(pair<string, string>("AskPrice1", num_value));
   sprintf(num_value, "%d", res.AskVolume1);
   my_map.insert(pair<string, string>("AskVolume1", num_value));
@@ -107,7 +107,7 @@ inline int parseFrom(map<string, string> &my_map, WZRtnOrderField &res)
   my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));
   my_map.insert(pair<string, string> ("ExchangeID", res.ExchangeID));
 
-  sprintf(num_value, "%f", res.LimitPrice);
+  sprintf(num_value, "%lf", res.LimitPrice);
   my_map.insert(pair<string, string> ("LimitPrice", num_value));
   sprintf(num_value, "%d", res.VolumeTraded);
   my_map.insert(pair<string, string> ("VolumeTraded", num_value));
@@ -141,7 +141,7 @@ inline int parseFrom(map<string, string> &my_map, TSRtnOrderField &res)
   my_map.insert(pair<string, string> ("InstrumentID", res.InstrumentID));
   my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));
 
-  sprintf(num_value, "%f", res.LimitPrice);
+  sprintf(num_value, "%lf", res.LimitPrice);
   my_map.insert(pair<string, string> ("LimitPrice", num_value));
   sprintf(num_value, "%d", res.VolumeTraded);
   my_map.insert(pair<string, string> ("VolumeTraded", num_value));
@@ -176,7 +176,7 @@ inline int parseFrom(map<string, string> &my_map, WZRtnTradeField &res)
   my_map.insert(pair<string, string> ("ParticipantID", res.ParticipantID));
   my_map.insert(pair<string, string> ("ClientID", res.ClientID));
 
-  sprintf(num_value, "%f", res.Price);
+  sprintf(num_value, "%lf", res.Price);
   my_map.insert(pair<string, string> ("Price", num_value));
   sprintf(num_value, "%d", res.Volume);
   my_map.insert(pair<string, string> ("Volume", num_value));
@@ -201,7 +201,7 @@ inline int parseFrom(map<string, string> &my_map, TSRtnTradeField &res)
   my_map.insert(pair<string, string> ("InstrumentID", res.InstrumentID));
   my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));
 
-  sprintf(num_value, "%f", res.Price);
+  sprintf(num_value, "%lf", res.Price);
   my_map.insert(pair<string, string> ("Price", num_value));
   sprintf(num_value, "%d", res.Volume);
   my_map.insert(pair<string, string> ("Volume", num_value));
