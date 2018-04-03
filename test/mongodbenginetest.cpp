@@ -45,7 +45,7 @@ class TestMongodbEngine : public testing::Test
     db->setTablename("TSMarketDataField");
     
     conn = mongocxx::client(mongocxx::uri("mongodb://localhost:27017"));
-    collection = conn["test"]["TSMarketDataField"]
+    collection = conn["test"]["TSMarketDataField"];
     // fp = fopen("../test/data.csv", "r");
     // if (fp == NULL) {
     //   perror("no file");
@@ -74,8 +74,8 @@ TEST_F(TestMongodbEngine, insert_one)
   //fread(pDepthMarketData, sizeof(TSMarketDataField), 1, fp);
   for (int i=0; i<100; i++){
     //memset(pDepthMarketData, 0, sizeof(TSMarketDataField));
-    pDepthMarketData->Volume = i;
-    parseFrom(ts, *pDepthMarketData);
+    // pDepthMarketData->Volume = i;
+    // parseFrom(ts, *pDepthMarketData);
     //db->insert_one(ts);
   }
 }
