@@ -132,7 +132,7 @@ int MongodbEngine::delete_one(const vector<KeyValue> &condition, const char ID[2
   return (bool)result;
 }
 
-int MongodbEngine::delete_many(const vector<KeyValue> &, const char ID[20] = "\0") {
+int MongodbEngine::delete_many(const vector<KeyValue> &condition, const char ID[20] = "\0") {
   // get document
   document doc {};
   toDocument(condition, ID, doc);
