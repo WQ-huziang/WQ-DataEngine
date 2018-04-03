@@ -158,13 +158,13 @@ clean: src/CMakeFiles/WZMongodbEngine.dir/clean
 
 # Convenience name for "all" pass in the directory.
 test/all: test/CMakeFiles/luo_test.dir/all
-test/all: test/CMakeFiles/mongodbenginetest.dir/all
+test/all: test/CMakeFiles/li_gtest.dir/all
 
 .PHONY : test/all
 
 # Convenience name for "clean" pass in the directory.
 test/clean: test/CMakeFiles/luo_test.dir/clean
-test/clean: test/CMakeFiles/mongodbenginetest.dir/clean
+test/clean: test/CMakeFiles/li_gtest.dir/clean
 
 .PHONY : test/clean
 
@@ -180,7 +180,7 @@ test/preinstall:
 test/CMakeFiles/luo_test.dir/all: src/CMakeFiles/WZMongodbEngine.dir/all
 	$(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/depend
 	$(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lijiaheng/dengine3/build/CMakeFiles --progress-num=5,6 "Built target luo_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lijiaheng/dengine3/build/CMakeFiles --progress-num=7,8 "Built target luo_test"
 .PHONY : test/CMakeFiles/luo_test.dir/all
 
 # Include target in all.
@@ -211,39 +211,39 @@ clean: test/CMakeFiles/luo_test.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target test/CMakeFiles/mongodbenginetest.dir
+# Target rules for target test/CMakeFiles/li_gtest.dir
 
 # All Build rule for target.
-test/CMakeFiles/mongodbenginetest.dir/all: src/CMakeFiles/WZMongodbEngine.dir/all
-	$(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/depend
-	$(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lijiaheng/dengine3/build/CMakeFiles --progress-num=7,8 "Built target mongodbenginetest"
-.PHONY : test/CMakeFiles/mongodbenginetest.dir/all
+test/CMakeFiles/li_gtest.dir/all: src/CMakeFiles/WZMongodbEngine.dir/all
+	$(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/depend
+	$(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lijiaheng/dengine3/build/CMakeFiles --progress-num=5,6 "Built target li_gtest"
+.PHONY : test/CMakeFiles/li_gtest.dir/all
 
 # Include target in all.
-all: test/CMakeFiles/mongodbenginetest.dir/all
+all: test/CMakeFiles/li_gtest.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-test/CMakeFiles/mongodbenginetest.dir/rule: cmake_check_build_system
+test/CMakeFiles/li_gtest.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lijiaheng/dengine3/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mongodbenginetest.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/li_gtest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lijiaheng/dengine3/build/CMakeFiles 0
-.PHONY : test/CMakeFiles/mongodbenginetest.dir/rule
+.PHONY : test/CMakeFiles/li_gtest.dir/rule
 
 # Convenience name for target.
-mongodbenginetest: test/CMakeFiles/mongodbenginetest.dir/rule
+li_gtest: test/CMakeFiles/li_gtest.dir/rule
 
-.PHONY : mongodbenginetest
-
-# clean rule for target.
-test/CMakeFiles/mongodbenginetest.dir/clean:
-	$(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/clean
-.PHONY : test/CMakeFiles/mongodbenginetest.dir/clean
+.PHONY : li_gtest
 
 # clean rule for target.
-clean: test/CMakeFiles/mongodbenginetest.dir/clean
+test/CMakeFiles/li_gtest.dir/clean:
+	$(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/clean
+.PHONY : test/CMakeFiles/li_gtest.dir/clean
+
+# clean rule for target.
+clean: test/CMakeFiles/li_gtest.dir/clean
 
 .PHONY : clean
 

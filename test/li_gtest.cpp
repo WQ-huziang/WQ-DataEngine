@@ -39,7 +39,7 @@ class TestMongodbEngine : public testing::Test
     db = MongodbEngine::getInstance();
     db->init();
     db->setLibname("test");
-    db->setTablename("TSMarketDataField2");
+    db->setTablename("TSMarketDataField3");
     fp = fopen("../test/data.csv", "r");
     if (fp == NULL) {
       perror("no file");
@@ -69,16 +69,17 @@ bool ione(){
   return true;
 }
 
-TEST_F(TestMongodbEngine, insert_one)
-{
-  for(int i=0; i<100; i++){
-    cout << i << endl;
-    memset(pDepthMarketData, 0, sizeof(pDepthMarketData));
-    pDepthMarketData->Volume = 999;
-    parseFrom(ts, *pDepthMarketData);
-    db->insert_one(ts);
-  }
-}
+// TEST_F(TestMongodbEngine, insert_one)
+// {
+//   for(int i=101; i<200; i++){
+//     cout << i << endl;
+//     memset(pDepthMarketData, 0, sizeof(pDepthMarketData));
+//     pDepthMarketData->Volume = i;
+//     parseFrom(ts, *pDepthMarketData);
+//     db->insert_one(ts);
+//     ts.clear();
+//   }
+// }
 
 // TEST_F(TestMongodbEngine, insert_many)
 // {
@@ -98,7 +99,8 @@ TEST_F(TestMongodbEngine, insert_one)
 // {
 //   KeyValue kv;
 //   kv.key = "Volume";
-//   kv.minvalue = "50";
+//   kv.sides = true;
+//   kv.minvalue = "150";
 //   kv.maxvalue = "";
 //   filter.push_back(kv);
 //   char *instrumentid = {"\0"};
@@ -109,12 +111,11 @@ TEST_F(TestMongodbEngine, insert_one)
 //   }
 // }
 
-// // virtual int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0") = 0;
 TEST_F(TestMongodbEngine, find_many)
 {
   KeyValue kv1, kv2;
   kv1.key = "Volume";
-  kv1.minvalue = "999";
+  kv1.minvalue = "150";
   kv1.maxvalue = "";
   filter.push_back(kv1);
   char *instrumentid = {"\0"};
@@ -135,7 +136,7 @@ TEST_F(TestMongodbEngine, find_many)
 // {
 //   KeyValue kv;
 //   kv.key = "Volume";
-//   kv.minvalue = "999";
+//   kv.minvalue = "150";
 //   filter.push_back(kv);
 //   char *instrumentid = {"\0"};
 //   // vector<map<string, string>> dataset2;
@@ -146,11 +147,12 @@ TEST_F(TestMongodbEngine, find_many)
 // {
 //   KeyValue kv;
 //   kv.key = "Volume";
-//   kv.minvalue = "999";
+//   kv.minvalue = "150";
 //   filter.push_back(kv);
 //   char *instrumentid = {"\0"};
 //   // vector<map<string, string>> dataset2;
 //   db->delete_many(filter, instrumentid);
+// }
 
 int main(int argc,char *argv[])
 {

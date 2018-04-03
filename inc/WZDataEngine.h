@@ -16,6 +16,7 @@ using std::map;
 
 struct KeyValue {
   string key;
+  bool sides;
   string minvalue;
   string maxvalue;
 };

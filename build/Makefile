@@ -150,17 +150,17 @@ luo_test/fast:
 .PHONY : luo_test/fast
 
 #=============================================================================
-# Target rules for targets named mongodbenginetest
+# Target rules for targets named li_gtest
 
 # Build rule for target.
-mongodbenginetest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mongodbenginetest
-.PHONY : mongodbenginetest
+li_gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 li_gtest
+.PHONY : li_gtest
 
 # fast build rule for target.
-mongodbenginetest/fast:
-	$(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/build
-.PHONY : mongodbenginetest/fast
+li_gtest/fast:
+	$(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/build
+.PHONY : li_gtest/fast
 
 # Help Target
 help:
@@ -173,7 +173,7 @@ help:
 	@echo "... WZMongodbEngine_static"
 	@echo "... WZMongodbEngine"
 	@echo "... luo_test"
-	@echo "... mongodbenginetest"
+	@echo "... li_gtest"
 .PHONY : help
 
 

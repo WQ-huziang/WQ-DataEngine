@@ -7,4 +7,4 @@
 /home/lijiaheng/dengine3/build/test/CMakeFiles/rebuild_cache.dir
 /home/lijiaheng/dengine3/build/test/CMakeFiles/edit_cache.dir
 /home/lijiaheng/dengine3/build/test/CMakeFiles/luo_test.dir
-/home/lijiaheng/dengine3/build/test/CMakeFiles/mongodbenginetest.dir
+/home/lijiaheng/dengine3/build/test/CMakeFiles/li_gtest.dir

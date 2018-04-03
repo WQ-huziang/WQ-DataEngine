@@ -126,19 +126,46 @@ luo_test/fast:
 .PHONY : luo_test/fast
 
 # Convenience name for target.
-test/CMakeFiles/mongodbenginetest.dir/rule:
-	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mongodbenginetest.dir/rule
-.PHONY : test/CMakeFiles/mongodbenginetest.dir/rule
+test/CMakeFiles/li_gtest.dir/rule:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/li_gtest.dir/rule
+.PHONY : test/CMakeFiles/li_gtest.dir/rule
 
 # Convenience name for target.
-mongodbenginetest: test/CMakeFiles/mongodbenginetest.dir/rule
+li_gtest: test/CMakeFiles/li_gtest.dir/rule
 
-.PHONY : mongodbenginetest
+.PHONY : li_gtest
 
 # fast build rule for target.
-mongodbenginetest/fast:
-	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/build
-.PHONY : mongodbenginetest/fast
+li_gtest/fast:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/build
+.PHONY : li_gtest/fast
+
+li_gtest.o: li_gtest.cpp.o
+
+.PHONY : li_gtest.o
+
+# target to build an object file
+li_gtest.cpp.o:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/li_gtest.cpp.o
+.PHONY : li_gtest.cpp.o
+
+li_gtest.i: li_gtest.cpp.i
+
+.PHONY : li_gtest.i
+
+# target to preprocess a source file
+li_gtest.cpp.i:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/li_gtest.cpp.i
+.PHONY : li_gtest.cpp.i
+
+li_gtest.s: li_gtest.cpp.s
+
+.PHONY : li_gtest.s
+
+# target to generate assembly for a file
+li_gtest.cpp.s:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/li_gtest.dir/build.make test/CMakeFiles/li_gtest.dir/li_gtest.cpp.s
+.PHONY : li_gtest.cpp.s
 
 luo_test.o: luo_test.cpp.o
 
@@ -167,33 +194,6 @@ luo_test.cpp.s:
 	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/luo_test.cpp.s
 .PHONY : luo_test.cpp.s
 
-mongodbenginetest.o: mongodbenginetest.cpp.o
-
-.PHONY : mongodbenginetest.o
-
-# target to build an object file
-mongodbenginetest.cpp.o:
-	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o
-.PHONY : mongodbenginetest.cpp.o
-
-mongodbenginetest.i: mongodbenginetest.cpp.i
-
-.PHONY : mongodbenginetest.i
-
-# target to preprocess a source file
-mongodbenginetest.cpp.i:
-	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.i
-.PHONY : mongodbenginetest.cpp.i
-
-mongodbenginetest.s: mongodbenginetest.cpp.s
-
-.PHONY : mongodbenginetest.s
-
-# target to generate assembly for a file
-mongodbenginetest.cpp.s:
-	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.s
-.PHONY : mongodbenginetest.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -203,13 +203,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... luo_test"
-	@echo "... mongodbenginetest"
+	@echo "... li_gtest"
+	@echo "... li_gtest.o"
+	@echo "... li_gtest.i"
+	@echo "... li_gtest.s"
 	@echo "... luo_test.o"
 	@echo "... luo_test.i"
 	@echo "... luo_test.s"
-	@echo "... mongodbenginetest.o"
-	@echo "... mongodbenginetest.i"
-	@echo "... mongodbenginetest.s"
 .PHONY : help
 
 

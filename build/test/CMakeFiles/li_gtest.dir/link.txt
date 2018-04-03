@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/li_gtest.dir/li_gtest.cpp.o  -o ../../bin/li_gtest  -L/home/lijiaheng/dengine3/lib -lgtest -lgflags -lpthread -lgtest_main ../../lib/libWZMongodbEngine.so.1.1 -lmongocxx -lbsoncxx -Wl,-rpath,/home/lijiaheng/dengine3/lib 
