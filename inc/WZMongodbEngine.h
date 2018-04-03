@@ -20,7 +20,7 @@ class MongodbEngine : public DataEngine {
   // virtual function complete
   void init();
   int insert_one(const map<string, string> &);
-  int insert_many(const vector<std::map<string, string>> &);
+  int insert_many(const vector<map<string, string>> &);
   int update_one(const KeyValue &, const vector<KeyValue> &);
   int update_many(const KeyValue &, const vector<KeyValue> &);
   int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0");

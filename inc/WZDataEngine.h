@@ -20,10 +20,21 @@ struct KeyValue {
   string minvalue;
   string maxvalue;
 
-  KeyValue(const string _key, const string _minvalue, const string _maxvalue = "")
+  KeyValue() {
+    sides = false;
+  }
+  KeyValue(const string _key, const string value)
+    : key(_key),
+      minvalue(value) {
+      sides = false;
+  }
+
+  KeyValue(const string _key, const string _minvalue, const string _maxvalue)
     : key(_key),
       minvalue(_minvalue),
-      maxvalue(_maxvalue) {}
+      maxvalue(_maxvalue) {
+      sides = false;
+  }
 };
 
 class DataEngine {
