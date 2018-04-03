@@ -140,7 +140,7 @@ int MongodbEngine::delete_many(const vector<KeyValue> &condition, const char ID[
   // get many collection
   mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
-  auto result = coll.delete_many(doc << finalize);\
+  auto result = coll.delete_many(doc << finalize);
   if (result) {
     return result->deleted_count();
   }
