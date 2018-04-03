@@ -1,6 +1,6 @@
 SET(LIB_SO mongocxx bsoncxx)
 SET(CLASS_FILE
-  WZMongodbEngine
+  MongodbEngine
 )
 
 # compile .so and .a

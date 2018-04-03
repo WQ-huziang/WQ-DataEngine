@@ -13,7 +13,7 @@
 #include <iostream>
 #include <map>
 #include <gtest/gtest.h>
-#include "WZMongodbEngine.h"
+#include "MongodbEngine.h"
 #include "DataParse.h"
 using namespace std;
 
@@ -65,7 +65,7 @@ class TestMongodbEngine : public testing::Test
 
 bool ione(){
 
-  
+
   return true;
 }
 

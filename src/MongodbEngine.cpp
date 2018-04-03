@@ -3,7 +3,7 @@
 // Author : huziang
 // this is a cpp file complete mongodb interface in c++
 
-#include "WZMongodbEngine.h"
+#include "MongodbEngine.h"
 #include <bsoncxx/json.hpp>
 #include <mongocxx/instance.hpp>
 #include "ToDocuments.h"

@@ -3,12 +3,12 @@
 // Author : huziang
 // this is a mongodb database complete
 
-#ifndef WZUTIL_WZMONGODBENGINE_H_
-#define WZUTIL_WZMONGODBENGINE_H_
+#ifndef WZUTIL_MONGODBENGINE_H_
+#define WZUTIL_MONGODBENGINE_H_
 
 #include <mongocxx/client.hpp>
 #include <bsoncxx/builder/stream/document.hpp>
-#include "WZDataEngine.h"
+#include "DataEngine.h"
 
 using bsoncxx::builder::stream::document;
 
@@ -38,4 +38,4 @@ class MongodbEngine : public DataEngine {
   mongocxx::client conn;
 };
 
-#endif  // WZUTIL_WZMONGODBENGINE_H_
+#endif  // WZUTIL_MONGODBENGINE_H_
