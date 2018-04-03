@@ -45,7 +45,7 @@ inline int parseTo(map<string, string> &my_map, string &json)
 
 inline int parseFrom(map<string, string> &my_map, TSMarketDataField &res)
 {
-  char num_value[20];
+  char num_value[1024];
 
   my_map.insert(pair<string, string>("TradingDay", res.TradingDay));
   my_map.insert(pair<string, string>("InstrumentID", res.InstrumentID));
@@ -90,13 +90,12 @@ inline int parseFrom(map<string, string> &my_map, TSMarketDataField &res)
   my_map.insert(pair<string, string>("AskPrice1", num_value));
   sprintf(num_value, "%d", res.AskVolume1);
   my_map.insert(pair<string, string>("AskVolume1", num_value));
-
   return 0;
 }
 
 inline int parseFrom(map<string, string> &my_map, WZRtnOrderField &res)
 {
-  char num_value[20];
+  char num_value[1024];
 
   my_map.insert(pair<string, string> ("BrokerID", res.BrokerID));
   my_map.insert(pair<string, string> ("UserID", res.UserID));
@@ -137,7 +136,7 @@ inline int parseFrom(map<string, string> &my_map, WZRtnOrderField &res)
 
 inline int parseFrom(map<string, string> &my_map, TSRtnOrderField &res)
 {
-  char num_value[20];
+  char num_value[1024];
   my_map.insert(pair<string, string> ("InstrumentID", res.InstrumentID));
   my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));
 
@@ -162,7 +161,7 @@ inline int parseFrom(map<string, string> &my_map, TSRtnOrderField &res)
 
 inline int parseFrom(map<string, string> &my_map, WZRtnTradeField &res)
 {
-  char num_value[20];
+  char num_value[1024];
 
   my_map.insert(pair<string, string> ("BrokerID", res.BrokerID));
   my_map.insert(pair<string, string> ("UserID", res.UserID));
@@ -196,7 +195,7 @@ inline int parseFrom(map<string, string> &my_map, WZRtnTradeField &res)
 
 inline int parseFrom(map<string, string> &my_map, TSRtnTradeField &res)
 {
-  char num_value[20];
+  char num_value[1024];
 
   my_map.insert(pair<string, string> ("InstrumentID", res.InstrumentID));
   my_map.insert(pair<string, string> ("OrderRef", res.OrderRef));

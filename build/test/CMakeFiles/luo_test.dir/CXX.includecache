@@ -24,16 +24,6 @@ wzdatastruct.h
 transportstruct.h
 ../inc/transportstruct.h
 
-../inc/ToDocuments.h
-iostream
--
-map
--
-string
--
-WZDataEngine.h
--
-
 ../inc/WZDataEngine.h
 cstring
 -
@@ -280,17 +270,23 @@ wzdatastruct.h
 wzconstant.h
 ../inc/wzconstant.h
 
-/home/lijiaheng/dengine3/src/WZMongodbEngine.cpp
+/home/lijiaheng/dengine3/test/luo_test.cpp
+iostream
+-
 WZMongodbEngine.h
-/home/lijiaheng/dengine3/src/WZMongodbEngine.h
-bsoncxx/json.hpp
 -
-mongocxx/instance.hpp
+map
 -
-ToDocuments.h
-/home/lijiaheng/dengine3/src/ToDocuments.h
+vector
+-
 DataParse.h
-/home/lijiaheng/dengine3/src/DataParse.h
+/home/lijiaheng/dengine3/test/DataParse.h
+transportstruct.h
+/home/lijiaheng/dengine3/test/transportstruct.h
+stdio.h
+-
+stdlib.h
+-
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp
 cstddef
@@ -655,20 +651,6 @@ bsoncxx/config/postlude.hpp
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/enums/binary_sub_type.hpp
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/enums/type.hpp
-
-/usr/local/include/bsoncxx/v_noabi/bsoncxx/json.hpp
-string
--
-bsoncxx/document/value.hpp
--
-bsoncxx/document/view.hpp
--
-bsoncxx/stdx/optional.hpp
--
-bsoncxx/config/prelude.hpp
--
-bsoncxx/config/postlude.hpp
--
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/oid.hpp
 array
@@ -1162,14 +1144,6 @@ mongocxx/cursor.hpp
 mongocxx/index_model.hpp
 -
 mongocxx/options/index_view.hpp
--
-mongocxx/config/prelude.hpp
--
-mongocxx/config/postlude.hpp
--
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/instance.hpp
-memory
 -
 mongocxx/config/prelude.hpp
 -

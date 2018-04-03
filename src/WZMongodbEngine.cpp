@@ -89,6 +89,7 @@ int MongodbEngine::find_one(map<string, string> &md, const vector<KeyValue> &con
   if (result) {
     string json = bsoncxx::to_json(result->view());
     parseTo(md, json);
+    map<string, string>::iterator it = md.begin();
     return 1;
   }
   return 0;
@@ -98,6 +99,7 @@ int MongodbEngine::find_many(vector<map<string, string>> &mds, const vector<KeyV
   // get document
   document doc {};
   toDocument(condition, ID, doc);
+  std::cout << bsoncxx::to_json(doc) << std::endl;
 
   // get many collection
   mongocxx::database db = conn.database(libname);

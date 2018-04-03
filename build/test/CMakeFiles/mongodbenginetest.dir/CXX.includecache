@@ -270,23 +270,17 @@ wzdatastruct.h
 wzconstant.h
 ../inc/wzconstant.h
 
-<<<<<<< HEAD:build/test/CMakeFiles/mongodbenginetest.dir/CXX.includecache
-/home/huziang/Desktop/WZDataEngine/test/mongodbenginetest.cpp
-=======
-/home/huziang/Desktop/WZDataEngine/test/hu_gtest.cpp
->>>>>>> huziang_gtest:build/test/CMakeFiles/hu_gtest.dir/CXX.includecache
+/home/lijiaheng/dengine3/test/mongodbenginetest.cpp
 iostream
--
-cmath
 -
 map
 -
 gtest/gtest.h
 -
 WZMongodbEngine.h
-/home/huziang/Desktop/WZDataEngine/test/WZMongodbEngine.h
+/home/lijiaheng/dengine3/test/WZMongodbEngine.h
 DataParse.h
-/home/huziang/Desktop/WZDataEngine/test/DataParse.h
+/home/lijiaheng/dengine3/test/DataParse.h
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp
 cstddef

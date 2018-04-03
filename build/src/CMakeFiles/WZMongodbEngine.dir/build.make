@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/huziang/Desktop/WZDataEngine
+CMAKE_SOURCE_DIR = /home/lijiaheng/dengine3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/huziang/Desktop/WZDataEngine/build
+CMAKE_BINARY_DIR = /home/lijiaheng/dengine3/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/WZMongodbEngine.dir/depend.make
@@ -59,16 +59,16 @@ include src/CMakeFiles/WZMongodbEngine.dir/flags.make
 
 src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o: src/CMakeFiles/WZMongodbEngine.dir/flags.make
 src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o: ../src/WZMongodbEngine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/WZDataEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o"
-	cd /home/huziang/Desktop/WZDataEngine/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o -c /home/huziang/Desktop/WZDataEngine/src/WZMongodbEngine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lijiaheng/dengine3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o"
+	cd /home/lijiaheng/dengine3/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o -c /home/lijiaheng/dengine3/src/WZMongodbEngine.cpp
 
 src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.i"
-	cd /home/huziang/Desktop/WZDataEngine/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/WZDataEngine/src/WZMongodbEngine.cpp > CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.i
+	cd /home/lijiaheng/dengine3/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lijiaheng/dengine3/src/WZMongodbEngine.cpp > CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.i
 
 src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.s"
-	cd /home/huziang/Desktop/WZDataEngine/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/WZDataEngine/src/WZMongodbEngine.cpp -o CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.s
+	cd /home/lijiaheng/dengine3/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lijiaheng/dengine3/src/WZMongodbEngine.cpp -o CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.s
 
 src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o.requires:
 
@@ -91,9 +91,9 @@ WZMongodbEngine_EXTERNAL_OBJECTS =
 ../lib/libWZMongodbEngine.so.1.1: src/CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o
 ../lib/libWZMongodbEngine.so.1.1: src/CMakeFiles/WZMongodbEngine.dir/build.make
 ../lib/libWZMongodbEngine.so.1.1: src/CMakeFiles/WZMongodbEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/huziang/Desktop/WZDataEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library ../../lib/libWZMongodbEngine.so"
-	cd /home/huziang/Desktop/WZDataEngine/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/WZMongodbEngine.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/huziang/Desktop/WZDataEngine/build/src && $(CMAKE_COMMAND) -E cmake_symlink_library ../../lib/libWZMongodbEngine.so.1.1 ../../lib/libWZMongodbEngine.so.1 ../../lib/libWZMongodbEngine.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lijiaheng/dengine3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library ../../lib/libWZMongodbEngine.so"
+	cd /home/lijiaheng/dengine3/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/WZMongodbEngine.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/lijiaheng/dengine3/build/src && $(CMAKE_COMMAND) -E cmake_symlink_library ../../lib/libWZMongodbEngine.so.1.1 ../../lib/libWZMongodbEngine.so.1 ../../lib/libWZMongodbEngine.so
 
 ../lib/libWZMongodbEngine.so.1: ../lib/libWZMongodbEngine.so.1.1
 	@$(CMAKE_COMMAND) -E touch_nocreate ../lib/libWZMongodbEngine.so.1
@@ -111,10 +111,10 @@ src/CMakeFiles/WZMongodbEngine.dir/requires: src/CMakeFiles/WZMongodbEngine.dir/
 .PHONY : src/CMakeFiles/WZMongodbEngine.dir/requires
 
 src/CMakeFiles/WZMongodbEngine.dir/clean:
-	cd /home/huziang/Desktop/WZDataEngine/build/src && $(CMAKE_COMMAND) -P CMakeFiles/WZMongodbEngine.dir/cmake_clean.cmake
+	cd /home/lijiaheng/dengine3/build/src && $(CMAKE_COMMAND) -P CMakeFiles/WZMongodbEngine.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/WZMongodbEngine.dir/clean
 
 src/CMakeFiles/WZMongodbEngine.dir/depend:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/huziang/Desktop/WZDataEngine /home/huziang/Desktop/WZDataEngine/src /home/huziang/Desktop/WZDataEngine/build /home/huziang/Desktop/WZDataEngine/build/src /home/huziang/Desktop/WZDataEngine/build/src/CMakeFiles/WZMongodbEngine.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/lijiaheng/dengine3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lijiaheng/dengine3 /home/lijiaheng/dengine3/src /home/lijiaheng/dengine3/build /home/lijiaheng/dengine3/build/src /home/lijiaheng/dengine3/build/src/CMakeFiles/WZMongodbEngine.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/WZMongodbEngine.dir/depend
 

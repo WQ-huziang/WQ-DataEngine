@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/huziang/Desktop/WZDataEngine
+CMAKE_SOURCE_DIR = /home/lijiaheng/dengine3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/huziang/Desktop/WZDataEngine/build
+CMAKE_BINARY_DIR = /home/lijiaheng/dengine3/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles /home/huziang/Desktop/WZDataEngine/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lijiaheng/dengine3/build/CMakeFiles /home/lijiaheng/dengine3/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lijiaheng/dengine3/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -137,17 +137,17 @@ WZMongodbEngine/fast:
 .PHONY : WZMongodbEngine/fast
 
 #=============================================================================
-# Target rules for targets named hu_gtest
+# Target rules for targets named luo_test
 
 # Build rule for target.
-hu_gtest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hu_gtest
-.PHONY : hu_gtest
+luo_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 luo_test
+.PHONY : luo_test
 
 # fast build rule for target.
-hu_gtest/fast:
-	$(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/build
-.PHONY : hu_gtest/fast
+luo_test/fast:
+	$(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/build
+.PHONY : luo_test/fast
 
 #=============================================================================
 # Target rules for targets named mongodbenginetest
@@ -172,7 +172,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... WZMongodbEngine_static"
 	@echo "... WZMongodbEngine"
-	@echo "... hu_gtest"
+	@echo "... luo_test"
 	@echo "... mongodbenginetest"
 .PHONY : help
 

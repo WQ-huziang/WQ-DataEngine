@@ -1,13 +1,10 @@
-/home/huziang/Desktop/WZDataEngine/build/CMakeFiles/edit_cache.dir
-/home/huziang/Desktop/WZDataEngine/build/CMakeFiles/rebuild_cache.dir
-/home/huziang/Desktop/WZDataEngine/build/src/CMakeFiles/rebuild_cache.dir
-/home/huziang/Desktop/WZDataEngine/build/src/CMakeFiles/edit_cache.dir
-/home/huziang/Desktop/WZDataEngine/build/src/CMakeFiles/WZMongodbEngine_static.dir
-/home/huziang/Desktop/WZDataEngine/build/src/CMakeFiles/WZMongodbEngine.dir
-/home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/edit_cache.dir
-/home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/rebuild_cache.dir
-<<<<<<< HEAD
-=======
-/home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/hu_gtest.dir
->>>>>>> huziang_gtest
-/home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/mongodbenginetest.dir
+/home/lijiaheng/dengine3/build/CMakeFiles/edit_cache.dir
+/home/lijiaheng/dengine3/build/CMakeFiles/rebuild_cache.dir
+/home/lijiaheng/dengine3/build/src/CMakeFiles/rebuild_cache.dir
+/home/lijiaheng/dengine3/build/src/CMakeFiles/edit_cache.dir
+/home/lijiaheng/dengine3/build/src/CMakeFiles/WZMongodbEngine_static.dir
+/home/lijiaheng/dengine3/build/src/CMakeFiles/WZMongodbEngine.dir
+/home/lijiaheng/dengine3/build/test/CMakeFiles/rebuild_cache.dir
+/home/lijiaheng/dengine3/build/test/CMakeFiles/edit_cache.dir
+/home/lijiaheng/dengine3/build/test/CMakeFiles/luo_test.dir
+/home/lijiaheng/dengine3/build/test/CMakeFiles/mongodbenginetest.dir

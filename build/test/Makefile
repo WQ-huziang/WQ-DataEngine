@@ -48,24 +48,13 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/huziang/Desktop/WZDataEngine
+CMAKE_SOURCE_DIR = /home/lijiaheng/dengine3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/huziang/Desktop/WZDataEngine/build
+CMAKE_BINARY_DIR = /home/lijiaheng/dengine3/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -78,16 +67,27 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/huziang/Desktop/WZDataEngine/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles /home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/progress.marks
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 0
+	cd /home/lijiaheng/dengine3/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/lijiaheng/dengine3/build/CMakeFiles /home/lijiaheng/dengine3/build/test/CMakeFiles/progress.marks
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lijiaheng/dengine3/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/clean
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,37 +97,37 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/lijiaheng/dengine3/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/hu_gtest.dir/rule:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/hu_gtest.dir/rule
-.PHONY : test/CMakeFiles/hu_gtest.dir/rule
+test/CMakeFiles/luo_test.dir/rule:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/luo_test.dir/rule
+.PHONY : test/CMakeFiles/luo_test.dir/rule
 
 # Convenience name for target.
-hu_gtest: test/CMakeFiles/hu_gtest.dir/rule
+luo_test: test/CMakeFiles/luo_test.dir/rule
 
-.PHONY : hu_gtest
+.PHONY : luo_test
 
 # fast build rule for target.
-hu_gtest/fast:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/build
-.PHONY : hu_gtest/fast
+luo_test/fast:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/build
+.PHONY : luo_test/fast
 
 # Convenience name for target.
 test/CMakeFiles/mongodbenginetest.dir/rule:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mongodbenginetest.dir/rule
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mongodbenginetest.dir/rule
 .PHONY : test/CMakeFiles/mongodbenginetest.dir/rule
 
 # Convenience name for target.
@@ -137,35 +137,35 @@ mongodbenginetest: test/CMakeFiles/mongodbenginetest.dir/rule
 
 # fast build rule for target.
 mongodbenginetest/fast:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/build
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/build
 .PHONY : mongodbenginetest/fast
 
-hu_gtest.o: hu_gtest.cpp.o
+luo_test.o: luo_test.cpp.o
 
-.PHONY : hu_gtest.o
+.PHONY : luo_test.o
 
 # target to build an object file
-hu_gtest.cpp.o:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/hu_gtest.cpp.o
-.PHONY : hu_gtest.cpp.o
+luo_test.cpp.o:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/luo_test.cpp.o
+.PHONY : luo_test.cpp.o
 
-hu_gtest.i: hu_gtest.cpp.i
+luo_test.i: luo_test.cpp.i
 
-.PHONY : hu_gtest.i
+.PHONY : luo_test.i
 
 # target to preprocess a source file
-hu_gtest.cpp.i:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/hu_gtest.cpp.i
-.PHONY : hu_gtest.cpp.i
+luo_test.cpp.i:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/luo_test.cpp.i
+.PHONY : luo_test.cpp.i
 
-hu_gtest.s: hu_gtest.cpp.s
+luo_test.s: luo_test.cpp.s
 
-.PHONY : hu_gtest.s
+.PHONY : luo_test.s
 
 # target to generate assembly for a file
-hu_gtest.cpp.s:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/hu_gtest.cpp.s
-.PHONY : hu_gtest.cpp.s
+luo_test.cpp.s:
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/luo_test.dir/build.make test/CMakeFiles/luo_test.dir/luo_test.cpp.s
+.PHONY : luo_test.cpp.s
 
 mongodbenginetest.o: mongodbenginetest.cpp.o
 
@@ -173,7 +173,7 @@ mongodbenginetest.o: mongodbenginetest.cpp.o
 
 # target to build an object file
 mongodbenginetest.cpp.o:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o
 .PHONY : mongodbenginetest.cpp.o
 
 mongodbenginetest.i: mongodbenginetest.cpp.i
@@ -182,7 +182,7 @@ mongodbenginetest.i: mongodbenginetest.cpp.i
 
 # target to preprocess a source file
 mongodbenginetest.cpp.i:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.i
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.i
 .PHONY : mongodbenginetest.cpp.i
 
 mongodbenginetest.s: mongodbenginetest.cpp.s
@@ -191,7 +191,7 @@ mongodbenginetest.s: mongodbenginetest.cpp.s
 
 # target to generate assembly for a file
 mongodbenginetest.cpp.s:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.s
+	cd /home/lijiaheng/dengine3/build && $(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.s
 .PHONY : mongodbenginetest.cpp.s
 
 # Help Target
@@ -200,13 +200,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... hu_gtest"
+	@echo "... edit_cache"
+	@echo "... luo_test"
 	@echo "... mongodbenginetest"
-	@echo "... hu_gtest.o"
-	@echo "... hu_gtest.i"
-	@echo "... hu_gtest.s"
+	@echo "... luo_test.o"
+	@echo "... luo_test.i"
+	@echo "... luo_test.s"
 	@echo "... mongodbenginetest.o"
 	@echo "... mongodbenginetest.i"
 	@echo "... mongodbenginetest.s"
@@ -221,6 +221,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/huziang/Desktop/WZDataEngine/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/lijiaheng/dengine3/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

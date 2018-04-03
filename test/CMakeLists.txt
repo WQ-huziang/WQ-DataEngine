@@ -1,5 +1,5 @@
-SET(HU_FILE hu_gtest)
-SET(MAIN_FILE mongodbenginetest)
+SET(HU_FILE luo_test)
+SET(MAIN_FILE li_gtest)
 SET(GTEST_LIB gtest gflags pthread gtest_main)
 SET(TEST_LIBS
   WZMongodbEngine
