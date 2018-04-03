@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 SET(HU_FILE hu_gtest)
 SET(LI_FILE li_gtest)
 SET(LUO_FILE luo_gtest)
+=======
+SET(HU_FILE luo_test)
+SET(MAIN_FILE li_gtest)
+>>>>>>> lijiaheng
 SET(GTEST_LIB gtest gflags pthread gtest_main)
 SET(TEST_LIBS
   WZMongodbEngine

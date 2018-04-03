@@ -41,13 +41,27 @@ using std::vector;
 using bsoncxx::builder::stream::document;
 
 inline void keyvalueToDocument(const KeyValue &kv, document &doc) {
-    if(kv.maxvalue != ""){
-      doc << kv.key << bsoncxx::builder::stream::open_document
-          << "$gte" << kv.minvalue
-          << "$lte" << kv.maxvalue
-          << bsoncxx::builder::stream::close_document;
-    } else {
-      doc << kv.key << kv.minvalue;
+    if(kv.sides){
+      if(kv.maxvalue != "" && kv.minvalue == ""){
+        doc << kv.key << bsoncxx::builder::stream::open_document
+            << "$lte" << kv.maxvalue
+            << bsoncxx::builder::stream::close_document;
+      }
+      else if(kv.maxvalue == "" && kv.minvalue != ""){
+        doc << kv.key << bsoncxx::builder::stream::open_document
+            << "$gte" << kv.minvalue
+            << bsoncxx::builder::stream::close_document;
+      }
+    }
+    else{
+      if(kv.maxvalue != ""){
+        doc << kv.key << bsoncxx::builder::stream::open_document
+            << "$gte" << kv.minvalue
+            << "$lte" << kv.maxvalue
+            << bsoncxx::builder::stream::close_document;
+      } else {
+        doc << kv.key << kv.minvalue;
+      }
     }
 }
 
