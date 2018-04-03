@@ -120,7 +120,7 @@ int MongodbEngine::find_many(vector<map<string, string>> &mds, const vector<KeyV
   return num;
 }
 
-int MongodbEngine::delete_one(const vector<KeyValue> &condition, const char ID[20] = "\0") {
+int MongodbEngine::delete_one(const vector<KeyValue> &condition, const char ID[20]) {
   // get document
   document doc {};
   toDocument(condition, ID, doc);
@@ -132,7 +132,7 @@ int MongodbEngine::delete_one(const vector<KeyValue> &condition, const char ID[2
   return (bool)result;
 }
 
-int MongodbEngine::delete_many(const vector<KeyValue> &, const char ID[20] = "\0") {
+int MongodbEngine::delete_many(const vector<KeyValue> &condition, const char ID[20]) {
   // get document
   document doc {};
   toDocument(condition, ID, doc);
@@ -140,8 +140,7 @@ int MongodbEngine::delete_many(const vector<KeyValue> &, const char ID[20] = "\0
   // get many collection
   mongocxx::database db = conn.database(libname);
   mongocxx::collection coll = db[tablename];
-  mongocxx::cursor cursor = coll.find(doc << finalize);
-
+  auto result = coll.delete_many(doc << finalize);\
   if (result) {
     return result->deleted_count();
   }
