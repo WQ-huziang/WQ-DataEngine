@@ -270,17 +270,19 @@ wzdatastruct.h
 wzconstant.h
 ../inc/wzconstant.h
 
-/home/luojunbin/project/WQ_project/DataEngine/test/mongodbenginetest.cpp
+/home/huziang/Desktop/WZDataEngine/test/hu_gtest.cpp
 iostream
+-
+cmath
 -
 map
 -
 gtest/gtest.h
 -
 WZMongodbEngine.h
-/home/luojunbin/project/WQ_project/DataEngine/test/WZMongodbEngine.h
+/home/huziang/Desktop/WZDataEngine/test/WZMongodbEngine.h
 DataParse.h
-/home/luojunbin/project/WQ_project/DataEngine/test/DataParse.h
+/home/huziang/Desktop/WZDataEngine/test/DataParse.h
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp
 cstddef

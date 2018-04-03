@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/luojunbin/project/WQ_project/DataEngine
+CMAKE_SOURCE_DIR = /home/huziang/Desktop/WZDataEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/luojunbin/project/WQ_project/DataEngine/build
+CMAKE_BINARY_DIR = /home/huziang/Desktop/WZDataEngine/build
 
 #=============================================================================
 # Directory level rules for directory src
@@ -86,7 +86,7 @@ src/preinstall:
 src/CMakeFiles/WZMongodbEngine_static.dir/all:
 	$(MAKE) -f src/CMakeFiles/WZMongodbEngine_static.dir/build.make src/CMakeFiles/WZMongodbEngine_static.dir/depend
 	$(MAKE) -f src/CMakeFiles/WZMongodbEngine_static.dir/build.make src/CMakeFiles/WZMongodbEngine_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles --progress-num=3,4 "Built target WZMongodbEngine_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/WZDataEngine/build/CMakeFiles --progress-num=3,4 "Built target WZMongodbEngine_static"
 .PHONY : src/CMakeFiles/WZMongodbEngine_static.dir/all
 
 # Include target in all.
@@ -96,9 +96,9 @@ all: src/CMakeFiles/WZMongodbEngine_static.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/WZMongodbEngine_static.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/WZMongodbEngine_static.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/WZMongodbEngine_static.dir/rule
 
 # Convenience name for target.
@@ -123,7 +123,7 @@ clean: src/CMakeFiles/WZMongodbEngine_static.dir/clean
 src/CMakeFiles/WZMongodbEngine.dir/all:
 	$(MAKE) -f src/CMakeFiles/WZMongodbEngine.dir/build.make src/CMakeFiles/WZMongodbEngine.dir/depend
 	$(MAKE) -f src/CMakeFiles/WZMongodbEngine.dir/build.make src/CMakeFiles/WZMongodbEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles --progress-num=1,2 "Built target WZMongodbEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/WZDataEngine/build/CMakeFiles --progress-num=1,2 "Built target WZMongodbEngine"
 .PHONY : src/CMakeFiles/WZMongodbEngine.dir/all
 
 # Include target in all.
@@ -133,9 +133,9 @@ all: src/CMakeFiles/WZMongodbEngine.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/WZMongodbEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/WZMongodbEngine.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/WZMongodbEngine.dir/rule
 
 # Convenience name for target.
@@ -157,11 +157,13 @@ clean: src/CMakeFiles/WZMongodbEngine.dir/clean
 # Directory level rules for directory test
 
 # Convenience name for "all" pass in the directory.
+test/all: test/CMakeFiles/hu_gtest.dir/all
 test/all: test/CMakeFiles/mongodbenginetest.dir/all
 
 .PHONY : test/all
 
 # Convenience name for "clean" pass in the directory.
+test/clean: test/CMakeFiles/hu_gtest.dir/clean
 test/clean: test/CMakeFiles/mongodbenginetest.dir/clean
 
 .PHONY : test/clean
@@ -172,13 +174,50 @@ test/preinstall:
 .PHONY : test/preinstall
 
 #=============================================================================
+# Target rules for target test/CMakeFiles/hu_gtest.dir
+
+# All Build rule for target.
+test/CMakeFiles/hu_gtest.dir/all: src/CMakeFiles/WZMongodbEngine.dir/all
+	$(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/depend
+	$(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/WZDataEngine/build/CMakeFiles --progress-num=5,6 "Built target hu_gtest"
+.PHONY : test/CMakeFiles/hu_gtest.dir/all
+
+# Include target in all.
+all: test/CMakeFiles/hu_gtest.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/hu_gtest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/hu_gtest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/hu_gtest.dir/rule
+
+# Convenience name for target.
+hu_gtest: test/CMakeFiles/hu_gtest.dir/rule
+
+.PHONY : hu_gtest
+
+# clean rule for target.
+test/CMakeFiles/hu_gtest.dir/clean:
+	$(MAKE) -f test/CMakeFiles/hu_gtest.dir/build.make test/CMakeFiles/hu_gtest.dir/clean
+.PHONY : test/CMakeFiles/hu_gtest.dir/clean
+
+# clean rule for target.
+clean: test/CMakeFiles/hu_gtest.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target test/CMakeFiles/mongodbenginetest.dir
 
 # All Build rule for target.
 test/CMakeFiles/mongodbenginetest.dir/all: src/CMakeFiles/WZMongodbEngine.dir/all
 	$(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/depend
 	$(MAKE) -f test/CMakeFiles/mongodbenginetest.dir/build.make test/CMakeFiles/mongodbenginetest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles --progress-num=5,6 "Built target mongodbenginetest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/WZDataEngine/build/CMakeFiles --progress-num=7,8 "Built target mongodbenginetest"
 .PHONY : test/CMakeFiles/mongodbenginetest.dir/all
 
 # Include target in all.
@@ -188,9 +227,9 @@ all: test/CMakeFiles/mongodbenginetest.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/mongodbenginetest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mongodbenginetest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luojunbin/project/WQ_project/DataEngine/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/WZDataEngine/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/mongodbenginetest.dir/rule
 
 # Convenience name for target.

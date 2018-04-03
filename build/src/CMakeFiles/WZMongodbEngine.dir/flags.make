@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -g -fPIC
 
 CXX_DEFINES = -DWZMongodbEngine_EXPORTS
 
-CXX_INCLUDES = -I/home/luojunbin/project/WQ_project/DataEngine/inc -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libbson-1.0 
+CXX_INCLUDES = -I/home/huziang/Desktop/WZDataEngine/inc -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libbson-1.0 
 

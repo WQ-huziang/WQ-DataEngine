@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/huziang/Desktop/WZDataEngine/test/mongodbenginetest.cpp" "/home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o"
+  "/home/huziang/Desktop/WZDataEngine/test/hu_gtest.cpp" "/home/huziang/Desktop/WZDataEngine/build/test/CMakeFiles/hu_gtest.dir/hu_gtest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
