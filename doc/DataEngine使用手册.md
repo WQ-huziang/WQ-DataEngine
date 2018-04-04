@@ -211,3 +211,11 @@ if (db->delete_many(mds, givenID)) {
 }
 ~~~
 
+- 设置索引
+
+~~~c++
+string md = "LastPrice";
+if (db->set_index(md, 1) == 0) {
+	cout << "Set Ascending Index Successly!" << endl;
+}
+~~~
