@@ -270,8 +270,10 @@ wzdatastruct.h
 wzconstant.h
 ../inc/wzconstant.h
 
-/home/luojunbin/project/WQ_project/DataEngine/test/mongodbenginetest.cpp
+/home/luojunbin/project/WQ_project/DataEngine/test/luo_test.cpp
 iostream
+-
+cmath
 -
 map
 -
@@ -279,14 +281,8 @@ gtest/gtest.h
 -
 WZMongodbEngine.h
 /home/luojunbin/project/WQ_project/DataEngine/test/WZMongodbEngine.h
-bsoncxx/json.hpp
--
-mongocxx/instance.hpp
--
 DataParse.h
 /home/luojunbin/project/WQ_project/DataEngine/test/DataParse.h
-vector
--
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp
 cstddef
@@ -651,20 +647,6 @@ bsoncxx/config/postlude.hpp
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/enums/binary_sub_type.hpp
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/enums/type.hpp
-
-/usr/local/include/bsoncxx/v_noabi/bsoncxx/json.hpp
-string
--
-bsoncxx/document/value.hpp
--
-bsoncxx/document/view.hpp
--
-bsoncxx/stdx/optional.hpp
--
-bsoncxx/config/prelude.hpp
--
-bsoncxx/config/postlude.hpp
--
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/oid.hpp
 array
@@ -1158,14 +1140,6 @@ mongocxx/cursor.hpp
 mongocxx/index_model.hpp
 -
 mongocxx/options/index_view.hpp
--
-mongocxx/config/prelude.hpp
--
-mongocxx/config/postlude.hpp
--
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/instance.hpp
-memory
 -
 mongocxx/config/prelude.hpp
 -

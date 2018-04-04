@@ -65,6 +65,7 @@ test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/includ
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/bsoncxx/v_noabi/bsoncxx/document/view_or_value.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/bsoncxx/v_noabi/bsoncxx/enums/binary_sub_type.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/bsoncxx/v_noabi/bsoncxx/enums/type.hpp
+test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/bsoncxx/v_noabi/bsoncxx/json.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/bsoncxx/v_noabi/bsoncxx/oid.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/bsoncxx/v_noabi/bsoncxx/stdx/optional.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/bsoncxx/v_noabi/bsoncxx/stdx/string_view.hpp
@@ -95,6 +96,7 @@ test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/includ
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/hint.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/index_model.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/index_view.hpp
+test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/instance.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/model/delete_many.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/model/delete_one.hpp
 test/CMakeFiles/mongodbenginetest.dir/mongodbenginetest.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/model/insert_one.hpp

@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -std=c++11 -g  -shared -Wl,-soname,libWZMongodbEngine.so.1 -o ../../lib/libWZMongodbEngine.so.1.1 CMakeFiles/WZMongodbEngine.dir/WZMongodbEngine.cpp.o 

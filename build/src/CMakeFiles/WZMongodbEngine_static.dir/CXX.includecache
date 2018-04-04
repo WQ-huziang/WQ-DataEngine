@@ -24,6 +24,16 @@ wzdatastruct.h
 transportstruct.h
 ../inc/transportstruct.h
 
+../inc/ToDocuments.h
+iostream
+-
+map
+-
+string
+-
+WZDataEngine.h
+-
+
 ../inc/WZDataEngine.h
 cstring
 -
@@ -270,23 +280,17 @@ wzdatastruct.h
 wzconstant.h
 ../inc/wzconstant.h
 
-/home/luojunbin/project/WQ_project/DataEngine/test/mongodbenginetest.cpp
-iostream
--
-map
--
-gtest/gtest.h
--
+/home/luojunbin/project/WQ_project/DataEngine/src/WZMongodbEngine.cpp
 WZMongodbEngine.h
-/home/luojunbin/project/WQ_project/DataEngine/test/WZMongodbEngine.h
+/home/luojunbin/project/WQ_project/DataEngine/src/WZMongodbEngine.h
 bsoncxx/json.hpp
 -
 mongocxx/instance.hpp
 -
+ToDocuments.h
+/home/luojunbin/project/WQ_project/DataEngine/src/ToDocuments.h
 DataParse.h
-/home/luojunbin/project/WQ_project/DataEngine/test/DataParse.h
-vector
--
+/home/luojunbin/project/WQ_project/DataEngine/src/DataParse.h
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp
 cstddef
