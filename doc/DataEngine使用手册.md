@@ -89,7 +89,7 @@
    int update_many(const KeyValue &, const vector<KeyValue> &);
    ```
 
-   Undifined
+   更新一个或多个条目。第一个参数代表筛选条件，用于确定更新对象，第二个参数代表要更新的内容，由多个key-value对组成。返回值代表更新成功的条目数量。
 
 6. ```c++
    int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0");
@@ -151,7 +151,19 @@ if (db->insert_one(md)) {
 - 更新条目
 
 ~~~c++
-undefined!
+//筛选条件
+KeyValue md;
+md.key = "LastPrice";
+md.minvalue = "0";
+//更新内容
+vector<keyValue> mds;
+KeyValue tmd;
+tmd.key = "LastPrice";
+tmd.minvalue = "1";
+mds.push_back(tmd);
+if (db->update_one(md, mds)) {
+	cout << "Update One Item Successly!" << endl;
+}
 ~~~
 
 - 查询某股票5分钟区间的最新价
@@ -188,6 +200,14 @@ if (db->find_many(mds, cond, givenID)) {
 - 删除某个股票的持仓量小于等于10的记录
 
 ~~~c++
-undefined!
+char givenID[20] = "l1805";
+KeyValue md;
+md.key = "Position";
+md.maxvalue = "10";
+vector<KeyValue> mds;
+mds.push_back(md);
+if (db->delete_many(mds, givenID)) {
+	cout << "Delete Successly!" << endl;
+}
 ~~~
 
