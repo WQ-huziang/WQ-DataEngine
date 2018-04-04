@@ -90,7 +90,6 @@ inline int parseFrom(map<string, string> &my_map, TSMarketDataField &res)
   my_map.insert(pair<string, string>("AskPrice1", num_value));
   sprintf(num_value, "%d", res.AskVolume1);
   my_map.insert(pair<string, string>("AskVolume1", num_value));
-
   return 0;
 }
 

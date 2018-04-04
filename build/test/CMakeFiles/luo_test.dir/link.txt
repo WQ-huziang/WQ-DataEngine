@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11 -g   CMakeFiles/luo_test.dir/luo_test.cpp.o  -o ../../bin/luo_test  -L/home/luojunbin/project/WQ_project/DataEngine/lib -lgtest -lgflags -lpthread -lgtest_main ../../lib/libWZMongodbEngine.so.1.1 -lmongocxx -lbsoncxx -Wl,-rpath,/home/luojunbin/project/WQ_project/DataEngine/lib 
