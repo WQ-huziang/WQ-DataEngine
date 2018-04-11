@@ -19,7 +19,6 @@
 
 using namespace rapidjson;
 using std::map;
-using std::vector;
 using std::string;
 using std::pair;
 
