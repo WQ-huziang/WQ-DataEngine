@@ -57,59 +57,58 @@
 
 ### 程序接口说明
 
-1. ```c++
-   void setLibname(const char lib[20]);
-   ```
+```c++
+void setLibname(const char lib[20]);
+```
 
-   设置数据库库名，之后所有操作将在该库内进行。
+- 设置数据库库名，之后所有操作将在该库内进行。
 
-2. ```c++
-   void setTablename(const char table[20])
-   ```
+```c++
+void setTablename(const char table[20])
+```
 
-   设置数据库表名，之后所有操作将在该表内进行。
+- 设置数据库表名，之后所有操作将在该表内进行。
 
-3. ```c++
-   void init();
-   ```
+```c++
+void init();
+```
 
-   初始化函数，此时会建立到数据库的连接。
+- 初始化函数，此时会建立到数据库的连接。 <br>
+  PS：此函数在一个进程内只能使用一次，否则会出现段错误。
 
-   PS：此函数在一个进程内只能使用一次，否则会出现段错误。
+```c++
+int insert_one(const map<string, string> &);
+int insert_many(const vector<map<string, string>> &);
+```
 
-4. ```c++
-   int insert_one(const map<string, string> &);
-   int insert_many(const vector<map<string, string>> &);
-   ```
+- 插入一个或多个条目。其中map中的两个string代表key-value键值对。如果插入多个条目，每个条目为vector中的一项。返回值代表插入成功数量。
 
-   插入一个或多个条目。其中map中的两个string代表key-value键值对。如果插入多个条目，每个条目为vector中的一项。返回值代表插入成功数量。
+```c++
+int update_one(const KeyValue &, const vector<KeyValue> &);
+int update_many(const KeyValue &, const vector<KeyValue> &);
+```
 
-5. ```c++
-   int update_one(const KeyValue &, const vector<KeyValue> &);
-   int update_many(const KeyValue &, const vector<KeyValue> &);
-   ```
+- 更新一个或多个条目。第一个参数代表筛选条件，用于确定更新对象，第二个参数代表要更新的内容，由多个key-value对组成。返回值代表更新成功的条目数量。
 
-   Undifined
+```c++
+int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0");
+int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0");
+```
 
-6. ```c++
-   int find_one(map<string, string> &, const vector<KeyValue> &, const char ID[20] = "\0");
-   int find_many(vector<map<string, string>> &, const vector<KeyValue> &, const char ID[20] = "\0");
-   ```
+- 查找一个或多个条目。第一个参数代表返回值，第二个参数代表筛选条件，最后一个参数代表想查找的InstrumentID，默认查找所有股票。返回值代表符合查找条件的条目数量。
 
-   查找一个或多个条目。第一个参数代表返回值，第二个参数代表筛选条件，最后一个参数代表想查找的InstrumentID，默认查找所有股票。返回值代表符合查找条件的条目数量。
+```c++
+int delete_one(const vector<KeyValue> &, const char ID[20] = "\0");
+int delete_many(const vector<KeyValue> &, const char ID[20] = "\0");
+```
 
-7. ```c++
-   int delete_one(const vector<KeyValue> &, const char ID[20] = "\0");
-   int delete_many(const vector<KeyValue> &, const char ID[20] = "\0");
-   ```
+- 删除一个或多个条目。第一个参数代表筛选条件，第二个参数代表想删除的InstrumentID。
 
-   删除一个或多个条目。第一个参数代表筛选条件，第二个参数代表想删除的InstrumentID。
+```c++
+int set_index(string, bool isascending = true);
+```
 
-8. ```c++
-   int set_index(string, bool isascending = true);
-   ```
-
-   设置索引，isascending代表索引方向，true为升序，false为降序。
+- 设置索引，isascending代表索引方向，true为升序，false为降序。
 
 ### 程序使用样例
 
@@ -151,7 +150,19 @@ if (db->insert_one(md)) {
 - 更新条目
 
 ~~~c++
-undefined!
+//筛选条件
+KeyValue md;
+md.key = "LastPrice";
+md.minvalue = "0";
+//更新内容
+vector<keyValue> mds;
+KeyValue tmd;
+tmd.key = "LastPrice";
+tmd.minvalue = "1";
+mds.push_back(tmd);
+if (db->update_one(md, mds)) {
+	cout << "Update One Item Successly!" << endl;
+}
 ~~~
 
 - 查询某股票5分钟区间的最新价
@@ -188,6 +199,23 @@ if (db->find_many(mds, cond, givenID)) {
 - 删除某个股票的持仓量小于等于10的记录
 
 ~~~c++
-undefined!
+char givenID[20] = "l1805";
+KeyValue md;
+md.key = "Position";
+md.sides = true;
+md.maxvalue = "10";
+vector<KeyValue> mds;
+mds.push_back(md);
+if (db->delete_many(mds, givenID)) {
+	cout << "Delete Successly!" << endl;
+}
 ~~~
 
+- 设置索引
+
+~~~c++
+string md = "LastPrice";
+if (db->set_index(md, 1) == 0) {
+	cout << "Set Ascending Index Successly!" << endl;
+}
+~~~
