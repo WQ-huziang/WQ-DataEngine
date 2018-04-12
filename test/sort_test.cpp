@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <map>
-#include "DataParse.h"
-#include "MongodbEngine.h"
+#include "dataparse.h"
+#include "mongodbengine.h"
 
 using namespace std;
 
@@ -31,6 +31,5 @@ int main()
 	{
 		cout << atoi(it->second.c_str()) << endl;
 	}
-
 	return 0;
 }

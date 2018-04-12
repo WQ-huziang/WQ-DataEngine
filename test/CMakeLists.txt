@@ -4,7 +4,7 @@ SET(LUO_FILE luo_gtest)
 SET(TTT sort_test)
 SET(GTEST_LIB gtest gflags pthread gtest_main)
 SET(TEST_LIBS
-  MongodbEngine
+  mongodbengine
   mongocxx
   bsoncxx
 )

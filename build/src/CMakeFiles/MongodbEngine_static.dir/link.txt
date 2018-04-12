@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libMongodbEngine.a  CMakeFiles/MongodbEngine_static.dir/MongodbEngine.cpp.o
+/usr/bin/ranlib ../../lib/libMongodbEngine.a
