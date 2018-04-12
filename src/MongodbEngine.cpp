@@ -6,8 +6,8 @@
 #include "MongodbEngine.h"
 #include <bsoncxx/json.hpp>
 #include <mongocxx/instance.hpp>
-#include "ToDocuments.h"
-#include "DataParse.h"
+#include "todocuments.h"
+#include "dataparse.h"
 
 using mongocxx::cursor;
 using bsoncxx::builder::stream::finalize;
