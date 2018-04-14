@@ -59,6 +59,9 @@ class DataEngine {
   // get max value
   virtual int get_max_item(map<string, string> &, const string &) = 0;
 
+  // get latest item
+  virtual int get_latest_item(vector<map<string, string>> &, const char ID[20], int ) = 0;
+
  protected:
   DataEngine() {}
   static DataEngine *instance;
