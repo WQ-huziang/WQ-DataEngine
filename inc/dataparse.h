@@ -15,7 +15,7 @@
 #include "rapidjson/stringbuffer.h"
 
 #include "wzdatastruct.h"
-#include "transportstruct.h"
+#include "tsdatastruct.h"
 
 using namespace rapidjson;
 using std::map;

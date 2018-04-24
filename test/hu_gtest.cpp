@@ -39,9 +39,9 @@ void scanTS(TSMarketDataField *pDepthMarketData) {
      >> pDepthMarketData->LowestPrice
      >> pDepthMarketData->Volume
      >> pDepthMarketData->Turnover
-     >> pDepthMarketData->OpenInterest
-     >> pDepthMarketData->ClosePrice
-     >> pDepthMarketData->SettlementPrice
+     >> pDepthMarketData->OpenInterest;
+  double temp;
+  fin >> temp >> temp
      >> pDepthMarketData->UpperLimitPrice
      >> pDepthMarketData->LowerLimitPrice
      >> pDepthMarketData->UpdateTime
@@ -65,8 +65,8 @@ void printTS(TSMarketDataField *pDepthMarketData) {
        << pDepthMarketData->Volume << endl
        << pDepthMarketData->Turnover << endl
        << pDepthMarketData->OpenInterest << endl
-       << pDepthMarketData->ClosePrice << endl
-       << pDepthMarketData->SettlementPrice << endl
+       // << pDepthMarketData->ClosePrice << endl
+       // << pDepthMarketData->SettlementPrice << endl
        << pDepthMarketData->UpperLimitPrice << endl
        << pDepthMarketData->LowerLimitPrice << endl
        << pDepthMarketData->UpdateTime << endl
